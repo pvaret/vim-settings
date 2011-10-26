@@ -1,0 +1,4 @@
+.hg/
+*.hgtags
+vim/.netrwhist
+*.py[co]

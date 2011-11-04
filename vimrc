@@ -63,11 +63,15 @@ set scrolloff=2
 set ttyfast
 
 "Relative numbering (for vim 7.3)
-set relativenumber
+if version >= 730
+  set relativenumber
+endif
 
 "Keep undo history (for vim 7.3)
-set undofile
-set undodir=/tmp/
+if version >= 730
+  set undofile
+  set undodir=/tmp/
+endif
 
 "Search configuration
 set smartcase

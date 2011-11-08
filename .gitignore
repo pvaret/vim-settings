@@ -2,3 +2,4 @@
 *.hgtags
 vim/.netrwhist
 *.py[co]
+tags

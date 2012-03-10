@@ -36,7 +36,7 @@ set modeline
 "Preferred completion mode:
 set wildmenu
 set wildmode=longest:full,full
-set completeopt=menu,longest,preview
+set completeopt=menu
 
 "Open vertical split to the right by default:
 set splitright

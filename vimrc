@@ -177,7 +177,7 @@ nnoremap <silent> <Leader>f <ESC>:NERDTreeToggle<CR>
 nnoremap <silent> <Leader>t <ESC>:TlistToggle<CR>
 
 "Bind key shortcut for Ack:
-nnoremap <leader>a <ESC>:LAck<space>
+nnoremap <leader>a <ESC>:Ack<space>
 
 "Bind key shortcut for FuzzyFinderTextMate:
 nnoremap <leader>r <ESC>:FuzzyFinderTextMate<CR>

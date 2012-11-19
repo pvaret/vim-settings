@@ -177,7 +177,7 @@ nnoremap <silent> <Leader>f <ESC>:NERDTreeToggle<CR>
 nnoremap <silent> <Leader>t <ESC>:TlistToggle<CR>
 
 "Bind key shortcut for Ack:
-nnoremap <leader>a <ESC>:Ack<space>
+nnoremap <leader>a <ESC>:LAck<space>
 
 "Bind key shortcut for FuzzyFinderTextMate:
 nnoremap <leader>r <ESC>:FuzzyFinderTextMate<CR>
@@ -208,6 +208,7 @@ nmap <leader>ga :Gwrite<cr>
 nmap <leader>gl :Glog<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>ge :Gedit<cr>
+nmap <leader>gb :Gblame<cr>
 
 "Add empty line above/below:
 nnoremap <silent> <leader>o <ESC>o<ESC>

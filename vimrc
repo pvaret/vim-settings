@@ -95,15 +95,6 @@ set t_Co=256
 set background=light
 colorscheme solarized
 
-"Less glaring diff colors:
-"hi DiffAdd    ctermbg=4
-"hi DiffChange ctermbg=5
-"hi DiffDelete cterm=bold ctermfg=4 ctermbg=6
-"hi DiffText   cterm=bold ctermbg=1
-
-"Less glaring menu color:
-"hi Pmenu ctermbg=12
-
 "Highlight space characters:
 set list
 set listchars=tab:»·,trail:·
@@ -195,7 +186,7 @@ nnoremap <leader>v V`]
 nnoremap <leader>w <C-w>v<C-w>l
 
 "Open new tab with current file:
-nnoremap <silent> <leader>nn <ESC>:tabnew %<CR>
+nnoremap <silent> <leader>nn <ESC>:tabnew<CR>
 nnoremap <silent> <leader>nc <ESC>:tabclose<CR>
 
 "Toggle folding:

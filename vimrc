@@ -123,6 +123,8 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 "SuperTab configuration:
 let g:SuperTabDefaultCompletionType="context"
 let g:SuperTabLongestHighlight=1
+let g:SuperTabLongestEnhanced=1
+let g:SuperTabClosePreviewOnPopupClose=1
 
 "Ack configuration:
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -133,6 +135,14 @@ let g:fuzzy_enumerating_limit = 20
 
 " Load UniCycle for reStructuredText files only:
 autocmd FileType rst UniCycleOn
+
+" Don't popup Jedi completion whenever a dot is entered:
+let g:jedi#popup_on_dot = 0
+
+" Override Jedi shortcuts to avoid conflicts with other plugins:
+let g:jedi#goto_command = "<leader>G"
+let g:jedi#rename_command = "<leader>R"
+let g:jedi#related_names_command = "<leader>N"
 
 
 " SHORTCUTS

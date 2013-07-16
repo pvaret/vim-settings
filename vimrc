@@ -136,13 +136,20 @@ let g:fuzzy_enumerating_limit = 20
 " Load UniCycle for reStructuredText files only:
 autocmd FileType rst UniCycleOn
 
+"Let Jedi configure Vim to suit its needs.
+let g:jedi#auto_vim_configuration = 1
+
 " Don't popup Jedi completion whenever a dot is entered:
-let g:jedi#popup_on_dot = 0
+"let g:jedi#popup_on_dot = 0
 
 " Override Jedi shortcuts to avoid conflicts with other plugins:
-let g:jedi#goto_command = "<leader>G"
-let g:jedi#rename_command = "<leader>R"
-let g:jedi#related_names_command = "<leader>N"
+let g:jedi#goto_command = "<leader>jg"
+let g:jedi#get_definition_command = "<leader>jd"
+let g:jedi#rename_command = "<leader>jr"
+let g:jedi#related_names_command = "<leader>jn"
+
+"OTOH, we want the standard shortcut for autocompletion:
+let g:jedi#autocompletion_command = "<tab>"
 
 
 " SHORTCUTS
@@ -179,6 +186,8 @@ nnoremap <silent> <Leader>t <ESC>:TlistToggle<CR>
 
 "Bind key shortcut for Ack:
 nnoremap <leader>a <ESC>:LAck<space>
+nnoremap <leader>A <ESC>"9yiw:LAck<space>-w<space><C-R>9<CR>
+vnoremap <leader>A "9y:LAck<space>"<C-R>9"<CR>
 
 "Bind key shortcut for FuzzyFinderTextMate:
 nnoremap <leader>r <ESC>:FuzzyFinderTextMate<CR>

@@ -121,10 +121,10 @@ let python_slow_sync=1
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 "SuperTab configuration:
-let g:SuperTabDefaultCompletionType="context"
-let g:SuperTabLongestHighlight=1
-let g:SuperTabLongestEnhanced=1
-let g:SuperTabClosePreviewOnPopupClose=1
+"let g:SuperTabDefaultCompletionType="context"
+"let g:SuperTabLongestHighlight=1
+"let g:SuperTabLongestEnhanced=1
+"let g:SuperTabClosePreviewOnPopupClose=1
 
 "Ack configuration:
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -140,7 +140,11 @@ autocmd FileType rst UniCycleOn
 let g:jedi#auto_vim_configuration = 1
 
 " Don't popup Jedi completion whenever a dot is entered:
-"let g:jedi#popup_on_dot = 0
+let g:jedi#popup_on_dot = 0
+
+"Don't show function definitions when opening a paren; it's nice but a bit
+"buggy:
+let g:jedi#show_function_definition = 0
 
 " Override Jedi shortcuts to avoid conflicts with other plugins:
 let g:jedi#goto_command = "<leader>jg"
@@ -149,8 +153,11 @@ let g:jedi#rename_command = "<leader>jr"
 let g:jedi#related_names_command = "<leader>jn"
 
 "OTOH, we want the standard shortcut for autocompletion:
-let g:jedi#autocompletion_command = "<tab>"
+let g:jedi#autocompletion_command = "<C-SPACE>"
 
+"Artificially keep Align.vim from loading its silly default maps.
+let g:loaded_AlignMaps = 1
+let g:loaded_AlignMapsPlugin = 1
 
 " SHORTCUTS
 " =========

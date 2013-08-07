@@ -9,8 +9,12 @@ call pathogen#infect()
 " GENERAL PREFERENCES
 " ===================
 
-"Configure vim for dark terminals:
-set background=dark
+"Allow Vim to use 256 colors (for some color scheme):
+set t_Co=256
+
+"Setup color scheme:
+set background=light
+colorscheme solarized
 
 "Jump to the last position when reopening a file:
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -88,13 +92,6 @@ autocmd Filetype python setlocal comments=b:##,O:#
 "Folding options.
 set foldminlines=2
 
-"Allow Vim to use 256 colors (for some color scheme):
-set t_Co=256
-
-"Setup color scheme:
-set background=light
-colorscheme solarized
-
 "Highlight space characters:
 set list
 set listchars=tab:»·,trail:·
@@ -117,14 +114,9 @@ autocmd BufRead,BufNewFile *.zcml set filetype=xml
 let python_highlight_all=1
 let python_slow_sync=1
 
-"Python-specific omnicompletion:
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-
 "SuperTab configuration:
-"let g:SuperTabDefaultCompletionType="context"
-"let g:SuperTabLongestHighlight=1
-"let g:SuperTabLongestEnhanced=1
-"let g:SuperTabClosePreviewOnPopupClose=1
+let g:SuperTabDefaultCompletionType="context"
+let g:SuperTabClosePreviewOnPopupClose=1
 
 "Ack configuration:
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -153,11 +145,9 @@ let g:jedi#rename_command = "<leader>jr"
 let g:jedi#related_names_command = "<leader>jn"
 
 "OTOH, we want the standard shortcut for autocompletion:
-let g:jedi#autocompletion_command = "<C-SPACE>"
+"XXX Doesn't work. Investigate later.
+"let g:jedi#autocompletion_command = "<C-Space>"
 
-"Artificially keep Align.vim from loading its silly default maps.
-let g:loaded_AlignMaps = 1
-let g:loaded_AlignMapsPlugin = 1
 
 " SHORTCUTS
 " =========

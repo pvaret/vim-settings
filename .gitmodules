@@ -10,3 +10,6 @@
 [submodule "vim/bundle/bufexplorer"]
 	path = vim/bundle/bufexplorer
 	url = https://github.com/corntrace/bufexplorer
+[submodule "vim/bundle/vim-golang"]
+	path = vim/bundle/vim-golang
+	url = https://github.com/jnwhiteh/vim-golang.git

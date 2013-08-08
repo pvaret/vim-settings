@@ -12,6 +12,13 @@ call pathogen#infect()
 "Allow Vim to use 256 colors (for some color scheme):
 set t_Co=256
 
+"Disable Background Color Erase (BCE) so that color schemes work properly when
+"Vim is used inside tmux and screen.
+"See http://snk.tuxfamily.org/log/vim-256color-bce.html
+if &term =~ '256color'
+  set t_ut=
+endif
+
 "Setup color scheme:
 set background=light
 colorscheme solarized
@@ -49,7 +56,7 @@ set splitright
 "set autochdir   "Causes some problems with some plugins.
 
 "Wait 1 secs before cancelling an unfinished command.
-set timeoutlen=1000
+set timeoutlen=100
 
 "Display cursor line.
 set cursorline
@@ -118,12 +125,12 @@ let python_slow_sync=1
 let g:SuperTabDefaultCompletionType="context"
 let g:SuperTabClosePreviewOnPopupClose=1
 
+"Use Powerline font in airline, and use proper theme.
+let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized'
+
 "Ack configuration:
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-
-"Override FuzzyFinderTextMate's defaults:
-let g:fuzzy_ceiling = 100000
-let g:fuzzy_enumerating_limit = 20
 
 " Load UniCycle for reStructuredText files only:
 autocmd FileType rst UniCycleOn
@@ -185,9 +192,6 @@ nnoremap <silent> <Leader>t <ESC>:TlistToggle<CR>
 nnoremap <leader>a <ESC>:LAck<space>
 nnoremap <leader>A <ESC>"9yiw:LAck<space>-w<space><C-R>9<CR>
 vnoremap <leader>A "9y:LAck<space>"<C-R>9"<CR>
-
-"Bind key shortcut for FuzzyFinderTextMate:
-nnoremap <leader>r <ESC>:FuzzyFinderTextMate<CR>
 
 "Clear searches with this:
 nnoremap <leader><space> :noh<CR>

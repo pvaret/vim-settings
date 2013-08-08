@@ -125,9 +125,12 @@ let python_slow_sync=1
 let g:SuperTabDefaultCompletionType="context"
 let g:SuperTabClosePreviewOnPopupClose=1
 
-"Use Powerline font in airline, and use proper theme.
+"Set up airline.
 let g:airline_powerline_fonts = 1
 let g:airline_theme='solarized'
+let g:airline_enable_branch=1
+let g:airline_detect_modified=1
+let g:airline_detect_paste=1
 
 "Ack configuration:
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"

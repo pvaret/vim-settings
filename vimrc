@@ -131,6 +131,10 @@ let g:airline_detect_paste=1
 "Ack configuration:
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
+"Load correct check for Syntastic on Python:
+let g:syntastic_python_checkers=['flake8', 'python']
+
+
 " Load UniCycle for reStructuredText files only:
 autocmd FileType rst UniCycleOn
 

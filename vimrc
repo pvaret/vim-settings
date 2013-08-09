@@ -56,7 +56,7 @@ set splitright
 "set autochdir   "Causes some problems with some plugins.
 
 "Wait 1 secs before cancelling an unfinished command.
-set timeoutlen=100
+set timeoutlen=1000
 
 "Display cursor line.
 set cursorline
@@ -112,6 +112,9 @@ autocmd Filetype python 2match OverColLimit "\%>79v.\+"
 
 "Treat ZCML as XML:
 autocmd BufRead,BufNewFile *.zcml set filetype=xml
+
+"Ignore Python object files:
+set wildignore+=*.pyc,*.pyo
 
 
 " PLUGIN CONFIGURATION

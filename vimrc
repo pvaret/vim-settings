@@ -96,9 +96,6 @@ autocmd Filetype python setlocal formatoptions-=t formatoptions+=croql
 autocmd Filetype python setlocal textwidth=79
 autocmd Filetype python setlocal comments=b:##,O:#
 
-"Folding options.
-set foldminlines=2
-
 "Highlight space characters:
 set list
 set listchars=tab:»·,trail:·
@@ -176,6 +173,7 @@ set pastetoggle=<F10>
 "Make help easier to browse with convenient shortcuts:
 autocmd Filetype help nnoremap <buffer><CR> <c-]>
 autocmd Filetype help nnoremap <buffer><BS> <c-T>
+autocmd Filetype help nnoremap <buffer>q :close<CR>
 
 "Use standard regex in searches by default:
 nnoremap / /\v

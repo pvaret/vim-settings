@@ -120,10 +120,6 @@ set wildignore+=*.pyc,*.pyo
 " PLUGIN CONFIGURATION
 " ====================
 
-"Extended Python matching configuration, for python.vim:
-let python_highlight_all=1
-let python_slow_sync=1
-
 "SuperTab configuration:
 let g:SuperTabDefaultCompletionType="context"
 let g:SuperTabClosePreviewOnPopupClose=1

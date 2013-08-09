@@ -6,6 +6,10 @@
 call pathogen#infect()
 
 
+
+" TODO: Look into YouCompleteMe when it can use a non-beta version of vim.
+
+
 " GENERAL PREFERENCES
 " ===================
 

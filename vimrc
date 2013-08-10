@@ -163,6 +163,19 @@ let g:jedi#related_names_command = "<leader>jn"
 "let g:jedi#autocompletion_command = "<C-Space>"
 
 
+"Let TagBar know it can use our Ubuntu-patched implementation of ctags for Go:
+let g:tagbar_type_go = {
+  \'ctagstype': 'go',
+  \'kinds': [
+    \'p:package',
+    \'f:function',
+    \'v:variables',
+    \'t:type',
+    \'c:const'
+  \]
+\}
+
+
 " SHORTCUTS
 " =========
 

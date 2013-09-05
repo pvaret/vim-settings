@@ -191,10 +191,13 @@ noremap <C-Right> <C-W>l
 "Convenient shortcut:
 set pastetoggle=<F10>
 
-"Make help easier to browse with convenient shortcuts:
+"Make help easier to browse help with convenient shortcuts:
 autocmd Filetype help nnoremap <buffer><CR> <c-]>
 autocmd Filetype help nnoremap <buffer><BS> <c-T>
 autocmd Filetype help nnoremap <buffer>q :close<CR>
+
+"Close quickfix window more conveniently:
+autocmd Filetype qf nnoremap <buffer>q :lclose<CR>
 
 "Use standard regex in searches by default:
 nnoremap / /\v

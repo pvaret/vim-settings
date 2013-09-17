@@ -210,7 +210,8 @@ let mapleader=","
 nnoremap <silent> <Leader>f <ESC>:NERDTreeToggle<CR>
 
 "Bind key shortcut for TagBar:
-nnoremap <silent> <Leader>t <ESC>:TagbarToggle<CR>
+nnoremap <silent> <Leader>T <ESC>:TagbarToggle<CR>
+nnoremap <silent> <Leader>t <ESC>:TagbarOpenAutoClose<CR>
 
 "Bind key shortcut for Ack:
 nnoremap <leader>a <ESC>:LAck<space>

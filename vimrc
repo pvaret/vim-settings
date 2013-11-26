@@ -140,7 +140,8 @@ let g:syntastic_python_checkers=['flake8', 'python']
 
 
 " Load UniCycle for reStructuredText files only:
-autocmd FileType rst UniCycleOn
+" Disabled until it knows to act on the local buffer only. :/
+" autocmd FileType rst UniCycleOn
 
 "Let Jedi configure Vim to suit its needs.
 let g:jedi#auto_vim_configuration = 1

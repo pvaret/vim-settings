@@ -8,3 +8,5 @@ snippet ifmain
 # PuDB FTW
 snippet pdb
 	import pudb ; pudb.set_trace()
+snippet pdbs
+	import sys ; sys.stdout = sys.__stdout__ ; import pudb ; pudb.set_trace()

@@ -214,6 +214,9 @@ nnoremap <silent> <Leader>f <ESC>:NERDTreeToggle<CR>
 nnoremap <silent> <Leader>T <ESC>:TagbarToggle<CR>
 nnoremap <silent> <Leader>t <ESC>:TagbarOpenAutoClose<CR>
 
+"Align first = in line:
+nnoremap <silent> <Leader>= <ESC>:Tabularize /^[^=]*\zs=<CR>
+
 "Bind key shortcut for Ack:
 nnoremap <leader>a <ESC>:LAck<space>
 nnoremap <leader>A <ESC>"9yiw:LAck<space>-w<space><C-R>9<CR>

@@ -137,7 +137,7 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 "Load correct check for Syntastic on Python:
 let g:syntastic_python_checkers=['flake8', 'python']
-
+let $PYFLAKES_NODOCTEST=1
 
 " Load UniCycle for reStructuredText files only:
 " Disabled until it knows to act on the local buffer only. :/

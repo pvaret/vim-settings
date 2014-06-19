@@ -23,6 +23,13 @@ if &term =~ '256color'
   set t_ut=
 endif
 
+"Vim fails to detect that our tmux setup sends xterm keys. We work around that here.
+"Without this, Ctrl-* shortcuts don't work. "screen-256color" is the TERM that
+"tmux advertises by default.
+if &term == "screen-256color"
+    set term=xterm-256color
+endif
+
 "Setup color scheme:
 set background=light
 colorscheme solarized
@@ -217,6 +224,9 @@ nnoremap <silent> <Leader>t <ESC>:TagbarOpenAutoClose<CR>
 "Align first = in line:
 nnoremap <silent> <Leader>= <ESC>:Tabularize /^[^=]*\zs=<CR>
 
+"Align colon declarations:
+nnoremap <silent> <Leader>: <ESC>:Tabularize /:\zs/l0l1<CR>
+
 "Bind key shortcut for Ack:
 nnoremap <leader>a <ESC>:LAck<space>
 nnoremap <leader>A <ESC>"9yiw:LAck<space>-w<space><C-R>9<CR>
@@ -254,6 +264,8 @@ nmap <leader>gb :Gblame<cr>
 nnoremap <silent> <leader>o <ESC>o<ESC>
 nnoremap <silent> <leader>O <ESC>O<ESC>
 
+"Disable Ex mode. :|
+map Q <Nop>
 
 " LOCAL OVERRIDES
 " ===============

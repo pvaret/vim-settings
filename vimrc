@@ -31,7 +31,7 @@ if &term == "screen-256color"
 endif
 
 "Setup color scheme:
-set background=light
+set background=dark
 colorscheme solarized
 
 "Jump to the last position when reopening a file:

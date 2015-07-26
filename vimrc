@@ -133,11 +133,15 @@ let g:SuperTabDefaultCompletionType="context"
 let g:SuperTabClosePreviewOnPopupClose=1
 
 "Set up airline.
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts=1
+let g:airline_inactive_collapse=1
 let g:airline_theme='solarized'
-let g:airline_enable_branch=1
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
+"And its extensions.
+let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#syntastic#enabled=1
+let g:airline#extensions#tabline#enabled=1
 
 "Ack configuration:
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -259,6 +263,9 @@ nmap <leader>gl :Glog<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>ge :Gedit<cr>
 nmap <leader>gb :Gblame<cr>
+
+"Toggle VimRoom:
+nmap <leader>zz :VimroomToggle<cr>
 
 "Add empty line above/below:
 nnoremap <silent> <leader>o <ESC>o<ESC>

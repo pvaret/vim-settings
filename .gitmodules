@@ -49,3 +49,6 @@
 [submodule "vim/bundle/vim-gitgutter"]
 	path = vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
+[submodule "vim/bundle/vim-online-thesaurus"]
+	path = vim/bundle/vim-online-thesaurus
+	url = https://github.com/beloglazov/vim-online-thesaurus

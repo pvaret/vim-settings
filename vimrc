@@ -1,3 +1,11 @@
+" LOCAL OVERRIDES (EARLY)
+" =======================
+
+if filereadable(expand("~/.vimrc.local.early"))
+  source $HOME/.vimrc.local.early
+endif
+
+
 " BUNDLES
 " =======
 
@@ -12,6 +20,9 @@ call pathogen#infect()
 
 " GENERAL PREFERENCES
 " ===================
+
+"We do in fact want syntax coloring:
+syntax on
 
 "Allow Vim to use 256 colors (for some color scheme):
 set t_Co=256
@@ -276,6 +287,7 @@ nnoremap <silent> <leader>O <ESC>O<ESC>
 
 "Disable Ex mode. :|
 map Q <Nop>
+
 
 " LOCAL OVERRIDES
 " ===============

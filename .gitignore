@@ -1,5 +1,6 @@
-.hg/
 *.hgtags
-vim/.netrwhist
 *.py[co]
+vim/.netrwhist
 tags
+.hg/
+cache/

@@ -246,6 +246,7 @@ nnoremap <silent> <Leader>= <ESC>:Tabularize /^[^=]*\zs=<CR>
 nnoremap <silent> <Leader>: <ESC>:Tabularize /:\zs/l0l1<CR>
 
 "Bind key shortcut for Ack:
+"TODO: Consider replacing with Ag.
 nnoremap <leader>a <ESC>:LAck<space>
 nnoremap <leader>A <ESC>"9yiw:LAck<space>-w<space><C-R>9<CR>
 vnoremap <leader>A "9y:LAck<space>"<C-R>9"<CR>

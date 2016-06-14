@@ -9,10 +9,90 @@ endif
 " BUNDLES
 " =======
 
-"Load Pathogen bundle manager.
+" Load Pathogen bundle manager.
 
 call pathogen#infect()
 
+
+" Load vim-plug plug-ins.
+
+call plug#begin('~/.vim/plugged')
+
+
+" Vimroom
+" -------
+" Convenient layout for writing.
+" Trigger with :VimroomToggle.
+
+Plug 'mikewest/vimroom'
+
+" FZF
+" ---
+" Super fast file finder.
+" Installs to its own directory because it can work standalone.
+" Also provides shell shortcuts: ctrl-T, ctrl-R, alt-C. See
+" https://github.com/junegunn/fzf.
+" TODO: Disable and remove CtrlP, which it replaces.
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" vim-online-thesaurus
+" --------------------
+" <localleader>K to look up the word under the cursor.
+
+Plug 'beloglazov/vim-online-thesaurus'
+
+" vim-argumentative
+" -----------------
+" Add grammar objects for function arguments.
+" Shift arguments with <, and >,
+" Move between argument boundaries with [, and ],
+" New text objects a, and i,
+
+Plug 'PeterRincker/vim-argumentative'
+
+" vim-obsession
+" -------------
+" Improves several aspects of sessions. If a session is loaded (or started with
+" :Obsess) it stays updated automatically.
+
+Plug 'tpope/vim-obsession'
+
+" vim-go
+" ------
+" Extensive set of Go-related plugins.
+" See Plug 'fatih/vim-go'.
+" Use a tagged release for stability.
+
+Plug 'fatih/vim-go', { 'tag': '*' }
+
+" vim-gitgutter
+" -------------
+" Add Git status symbols in the gutter for the relevant lines.
+" TODO: look at https://github.com/mhinz/vim-signify for something that supports
+"       more VCS.
+
+Plug 'airblade/vim-gitgutter'
+
+" vim-eunuch
+" ----------
+" UNIX command line helpers, including SudoEdit and SudoWrite.
+
+Plug 'tpope/vim-eunuch'
+
+" EasyMotion
+" Awesome navigation plugin.
+" <leader><leader>[motion command] to apply that motion visually.
+" I.e. ",,b" to jump to the beginning of one of the previous words, ",,fR" to
+" jump to one of the next 'R' in the file...
+" See https://github.com/easymotion/vim-easymotion.
+
+Plug 'easymotion/vim-easymotion'
+
+
+" Finalize vim-plug loading.
+
+call plug#end()
 
 
 " TODO: Look into YouCompleteMe when it can use a non-beta version of vim.
@@ -20,6 +100,10 @@ call pathogen#infect()
 
 " GENERAL PREFERENCES
 " ===================
+
+" TODO: Look into vim-sensible for a set of sane default; simplify the following
+" accordingly.
+
 
 "We do in fact want syntax coloring:
 syntax on
@@ -231,6 +315,7 @@ vnoremap / /\v
 
 "Better leader than the default:
 let mapleader=","
+let maplocalleader=","
 
 "Bind key shortcut for NERDtree:
 nnoremap <silent> <Leader>f <ESC>:NERDTreeToggle<CR>
@@ -269,15 +354,6 @@ nnoremap <silent> <leader>nc <ESC>:tabclose<CR>
 
 "Toggle folding:
 noremap <space> zA
-
-"Fugitive bindings:
-nmap <leader>gs :Gstatus<cr>
-nmap <leader>gc :Gcommit<cr>
-nmap <leader>ga :Gwrite<cr>
-nmap <leader>gl :Glog<cr>
-nmap <leader>gd :Gdiff<cr>
-nmap <leader>ge :Gedit<cr>
-nmap <leader>gb :Gblame<cr>
 
 "Toggle VimRoom:
 nmap <leader>zz :VimroomToggle<cr>

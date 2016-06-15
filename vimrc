@@ -340,6 +340,10 @@ let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#syntastic#enabled=1
 let g:airline#extensions#tabline#enabled=1
 
+"Disable somewhat noisy line number symbol.
+let g:airline_symbols = {}
+let g:airline_symbols.maxlinenr = ''
+
 "Ack configuration:
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
@@ -356,9 +360,6 @@ let g:jedi#popup_on_dot = 0
 "Don't show function definitions when opening a paren; it's nice but a bit
 "buggy:
 let g:jedi#show_call_signatures = 0
-
-"Disable somewhat noisy line number symbol.
-let g:airline_symbols.maxlinenr = ''
 
 " Override Jedi shortcuts to avoid conflicts with other plugins:
 let g:jedi#goto_command = "<leader>jg"

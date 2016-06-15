@@ -81,6 +81,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-eunuch'
 
 " EasyMotion
+" ----------
 " Awesome navigation plugin.
 " <leader><leader>[motion command] to apply that motion visually.
 " I.e. ",,b" to jump to the beginning of one of the previous words, ",,fR" to
@@ -89,6 +90,69 @@ Plug 'tpope/vim-eunuch'
 
 Plug 'easymotion/vim-easymotion'
 
+" vim-css-color
+" Colorize colors in CSS files.
+
+Plug 'skammer/vim-css-color'
+
+" vim-airline
+" -----------
+" Awesome tabline with compatibility with LOADS of plugins.
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" NERD Commenter
+" --------------
+" Commenting made easy.
+" ",cc" to comment. ",cu" tu uncomment. ",c<space>" to toggle.
+" ",cy" to yank before commenting.
+" See https://github.com/scrooloose/nerdcommenter.
+
+Plug 'scrooloose/nerdcommenter'
+
+" Tagbar
+" ------
+" A tag indexing plugin. Compatible with Airline.
+
+Plug 'majutsushi/tagbar'
+
+" Tabular
+" -------
+" Super cool plugin to help lining things vertically.
+
+Plug 'godlygeek/tabular'
+
+" Syntastic
+" ---------
+" Terrific syntax checking plug-in.
+" Requires some third party tools (like flake8 for Python).
+
+Plug 'scrooloose/syntastic'
+
+" Supertab
+" --------
+" Plug-in to use <Tab> for completions, because, y'know.
+
+Plug 'ervandew/supertab'
+
+" CtrlP
+" -----
+" Awesome fuzzy file finder.
+
+Plug 'ctrlpvim/ctrlp.vim'
+
+" bufexplorer
+" -----------
+" Convenient buffer switcher. ",be" to open.
+
+Plug 'corntrace/bufexplorer'
+
+" ack.vim
+" -------
+" Use ack from inside vim. Requires ack to be installed (d'uh).
+
+Plug 'mileszs/ack.vim'
 
 " Finalize vim-plug loading.
 
@@ -290,7 +354,7 @@ let g:tagbar_type_go = {
 " =========
 
 "Cd to current buffer's directory
-command CD :execute ":lcd " . expand("%:p:h")
+command! CD :execute ":lcd " . expand("%:p:h")
 
 "Remap window switching keys:
 noremap <C-Down>  <C-W>j
@@ -321,8 +385,8 @@ let maplocalleader=","
 nnoremap <silent> <Leader>f <ESC>:NERDTreeToggle<CR>
 
 "Bind key shortcut for TagBar:
-nnoremap <silent> <Leader>T <ESC>:TagbarToggle<CR>
-nnoremap <silent> <Leader>t <ESC>:TagbarOpenAutoClose<CR>
+nnoremap <silent> <Leader>t <ESC>:TagbarToggle<CR>
+nnoremap <silent> <Leader>T <ESC>:TagbarOpenAutoClose<CR>
 
 "Align first = in line:
 nnoremap <silent> <Leader>= <ESC>:Tabularize /^[^=]*\zs=<CR>

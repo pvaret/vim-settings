@@ -185,7 +185,6 @@ Plug 'tpope/vim-surround'
 " jedi-vim
 " --------
 " Awesome autocompletion. See https://github.com/davidhalter/jedi-vim.
-" Requires the jedi CLI tool.
 
 Plug 'davidhalter/jedi-vim'
 
@@ -356,13 +355,13 @@ let g:jedi#popup_on_dot = 0
 
 "Don't show function definitions when opening a paren; it's nice but a bit
 "buggy:
-let g:jedi#show_function_definition = 0
+let g:jedi#show_call_signatures = 0
 
 " Override Jedi shortcuts to avoid conflicts with other plugins:
 let g:jedi#goto_command = "<leader>jg"
-let g:jedi#get_definition_command = "<leader>jd"
+let g:jedi#goto_definitions_command = "<leader>jd"
 let g:jedi#rename_command = "<leader>jr"
-let g:jedi#related_names_command = "<leader>jn"
+let g:jedi#usages_command = "<leader>jn"
 
 "OTOH, we want the standard shortcut for autocompletion:
 "XXX Doesn't work. Investigate later.

@@ -350,12 +350,15 @@ let $PYFLAKES_NODOCTEST=1
 "Let Jedi configure Vim to suit its needs.
 let g:jedi#auto_vim_configuration = 1
 
-" Don't popup Jedi completion whenever a dot is entered:
+"Don't popup Jedi completion whenever a dot is entered:
 let g:jedi#popup_on_dot = 0
 
 "Don't show function definitions when opening a paren; it's nice but a bit
 "buggy:
 let g:jedi#show_call_signatures = 0
+
+"Disable somewhat noisy line number symbol.
+let g:airline_symbols.maxlinenr = ''
 
 " Override Jedi shortcuts to avoid conflicts with other plugins:
 let g:jedi#goto_command = "<leader>jg"

@@ -9,11 +9,6 @@ endif
 " BUNDLES
 " =======
 
-" Load Pathogen bundle manager.
-
-call pathogen#infect()
-
-
 " Load vim-plug plug-ins.
 
 call plug#begin('~/.vim/plugged')
@@ -153,6 +148,47 @@ Plug 'corntrace/bufexplorer'
 " Use ack from inside vim. Requires ack to be installed (d'uh).
 
 Plug 'mileszs/ack.vim'
+
+" ag.vim
+" ------
+" Ditto with ag. TODO: replace ack wih ag.
+
+Plug 'rking/ag.vim'
+
+" vim-colors-solarized
+" --------------------
+" See https://github.com/altercation/vim-colors-solarized for the settings.
+
+Plug 'altercation/vim-colors-solarized'
+
+" NERD Tree
+" ---------
+" Explore files and directory as a convenient tree in a vim buffer.
+" Also mark git status of files.
+
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" vim-repeat
+" ----------
+" Let the . shortcut work with plug-ins!
+
+Plug 'tpope/vim-repeat'
+
+" vim-surround
+" ------------
+" Expand the vim grammar with shortcuts for dealing with surrounding elements
+" in pairs.
+
+Plug 'tpope/vim-surround'
+
+" jedi-vim
+" --------
+" Awesome autocompletion. See https://github.com/davidhalter/jedi-vim.
+" Requires the jedi CLI tool.
+
+Plug 'davidhalter/jedi-vim'
+
 
 " Finalize vim-plug loading.
 
@@ -311,10 +347,6 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 "Load correct check for Syntastic on Python:
 let g:syntastic_python_checkers=['flake8', 'python']
 let $PYFLAKES_NODOCTEST=1
-
-" Load UniCycle for reStructuredText files only:
-" Disabled until it knows to act on the local buffer only. :/
-" autocmd FileType rst UniCycleOn
 
 "Let Jedi configure Vim to suit its needs.
 let g:jedi#auto_vim_configuration = 1

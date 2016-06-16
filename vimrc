@@ -188,6 +188,21 @@ Plug 'tpope/vim-surround'
 
 Plug 'davidhalter/jedi-vim'
 
+" delimitMate
+" -----------
+" Quote and parentheses auto-closing.
+" ":help delimitMate" for the details.
+
+Plug 'Raimondi/delimitMate'
+
+" vim-tmux-navigator
+" ------------------
+" Easily navigate between Vim and tmux panes.
+" Requires some tmux setup. See
+" https://github.com/christoomey/vim-tmux-navigator.
+
+Plug 'christoomey/vim-tmux-navigator'
+
 
 " Finalize vim-plug loading.
 
@@ -299,10 +314,17 @@ set incsearch
 set showmatch
 set hlsearch
 
+"General format options.
+set formatoptions-=o formatoptions+=rqc
+
 "Python-specific format options:
-autocmd Filetype python setlocal formatoptions-=t formatoptions+=croql
+autocmd Filetype python setlocal formatoptions-=t formatoptions+=l
 autocmd Filetype python setlocal textwidth=79
 autocmd Filetype python setlocal comments=b:##,O:#
+
+"Override unfortunate silliness in GetPythonIndent():
+let g:pyindent_open_paren=0
+let g:pyindent_nested_paren=0
 
 "Highlight space characters:
 set list
@@ -314,9 +336,6 @@ match ExtraWhitespace "\s\+$"
 "Highlight characters > 80 column in Python files:
 highlight OverColLimit term=inverse,bold cterm=bold ctermbg=red ctermfg=white gui=bold guibg=red guifg=white
 autocmd Filetype python 2match OverColLimit "\%>79v.\+"
-
-"Treat ZCML as XML:
-autocmd BufRead,BufNewFile *.zcml set filetype=xml
 
 "Ignore Python object files:
 set wildignore+=*.pyc,*.pyo
@@ -384,6 +403,12 @@ let g:tagbar_type_go = {
   \]
 \}
 
+"Expand spaces and CR in delimitMate:
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
+"Also recognize triple quotes in Python:
+au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
+
 
 " SHORTCUTS
 " =========
@@ -392,10 +417,17 @@ let g:tagbar_type_go = {
 command! CD :execute ":lcd " . expand("%:p:h")
 
 "Remap window switching keys:
-noremap <C-Down>  <C-W>j
-noremap <C-Up>    <C-W>k
-noremap <C-Left>  <C-W>h
-noremap <C-Right> <C-W>l
+"noremap <C-Down>  <C-W>j
+"noremap <C-Up>    <C-W>k
+"noremap <C-Left>  <C-W>h
+"noremap <C-Right> <C-W>l
+"Remap window switching keys with tmux-navigator compatibility:
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-Left> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-Down> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-Up> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
+nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
 
 "Convenient shortcut:
 set pastetoggle=<F10>

@@ -102,7 +102,7 @@ Plug 'vim-airline/vim-airline-themes'
 " Commenting made easy.
 " ",cc" to comment. ",cu" tu uncomment. ",c<space>" to toggle.
 " ",cy" to yank before commenting.
-" See https://github.com/scrooloose/nerdcommenter.
+" Loads more options! See https://github.com/scrooloose/nerdcommenter.
 
 Plug 'scrooloose/nerdcommenter'
 
@@ -382,7 +382,7 @@ let g:jedi#popup_on_dot = 0
 "buggy:
 let g:jedi#show_call_signatures = 0
 
-" Override Jedi shortcuts to avoid conflicts with other plugins:
+"Override Jedi shortcuts to avoid conflicts with other plugins:
 let g:jedi#goto_command = "<leader>jg"
 let g:jedi#goto_definitions_command = "<leader>jd"
 let g:jedi#rename_command = "<leader>jr"
@@ -392,6 +392,8 @@ let g:jedi#usages_command = "<leader>jn"
 "XXX Doesn't work. Investigate later.
 "let g:jedi#autocompletion_command = "<C-Space>"
 
+"Align comments to the left by default.
+let NERDDefaultAlign='left'
 
 "Let TagBar know it can use our Ubuntu-patched implementation of ctags for Go:
 let g:tagbar_type_go = {

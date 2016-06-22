@@ -21,6 +21,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'mikewest/vimroom'
 
+
 " FZF
 " ---
 " Super fast file finder.
@@ -31,11 +32,13 @@ Plug 'mikewest/vimroom'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
+
 " vim-online-thesaurus
 " --------------------
 " <localleader>K to look up the word under the cursor.
 
 Plug 'beloglazov/vim-online-thesaurus'
+
 
 " vim-argumentative
 " -----------------
@@ -46,12 +49,14 @@ Plug 'beloglazov/vim-online-thesaurus'
 
 Plug 'PeterRincker/vim-argumentative'
 
+
 " vim-obsession
 " -------------
 " Improves several aspects of sessions. If a session is loaded (or started with
 " :Obsess) it stays updated automatically.
 
 Plug 'tpope/vim-obsession'
+
 
 " vim-go
 " ------
@@ -61,19 +66,37 @@ Plug 'tpope/vim-obsession'
 
 Plug 'fatih/vim-go', { 'tag': '*' }
 
+
 " vim-gitgutter
 " -------------
 " Add Git status symbols in the gutter for the relevant lines.
-" TODO: look at https://github.com/mhinz/vim-signify for something that supports
-"       more VCS.
 
 Plug 'airblade/vim-gitgutter'
+
+
+" vim-signify
+" -----------
+" Add gutter status symbols for a whole bunch of VCS. So like vim-gitgutter,
+" just more generic. We explicitly configure it to ignore git repos, since
+" that's gitgutter's turf. (TODO: implement airline compatibility then do away
+" with gitgutter?)
+" ']c', '[c' to navigate between hunks.
+" New motions 'ic', 'ac' operate on current hunk.
+
+Plug 'mhinz/vim-signify'
+
+let g:signify_vcs_list               = [ 'perforce', 'hg'  ]
+let g:signify_sign_delete            = '-'
+let g:signify_sign_delete_first_line = '-'
+let g:signify_sign_change            = '~'
+
 
 " vim-eunuch
 " ----------
 " UNIX command line helpers, including SudoEdit and SudoWrite.
 
 Plug 'tpope/vim-eunuch'
+
 
 " EasyMotion
 " ----------
@@ -85,10 +108,12 @@ Plug 'tpope/vim-eunuch'
 
 Plug 'easymotion/vim-easymotion'
 
+
 " vim-css-color
 " Colorize colors in CSS files.
 
 Plug 'skammer/vim-css-color'
+
 
 " vim-airline
 " -----------
@@ -96,6 +121,7 @@ Plug 'skammer/vim-css-color'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
 
 " NERD Commenter
 " --------------
@@ -106,17 +132,20 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'scrooloose/nerdcommenter'
 
+
 " Tagbar
 " ------
 " A tag indexing plugin. Compatible with Airline.
 
 Plug 'majutsushi/tagbar'
 
+
 " Tabular
 " -------
 " Super cool plugin to help lining things vertically.
 
 Plug 'godlygeek/tabular'
+
 
 " Syntastic
 " ---------
@@ -125,11 +154,13 @@ Plug 'godlygeek/tabular'
 
 Plug 'scrooloose/syntastic'
 
+
 " Supertab
 " --------
 " Plug-in to use <Tab> for completions, because, y'know.
 
 Plug 'ervandew/supertab'
+
 
 " CtrlP
 " -----
@@ -137,11 +168,13 @@ Plug 'ervandew/supertab'
 
 Plug 'ctrlpvim/ctrlp.vim'
 
+
 " bufexplorer
 " -----------
 " Convenient buffer switcher. ",be" to open.
 
 Plug 'corntrace/bufexplorer'
+
 
 " ack.vim
 " -------
@@ -149,17 +182,20 @@ Plug 'corntrace/bufexplorer'
 
 Plug 'mileszs/ack.vim'
 
+
 " ag.vim
 " ------
 " Ditto with ag. TODO: replace ack wih ag.
 
 Plug 'rking/ag.vim'
 
+
 " vim-colors-solarized
 " --------------------
 " See https://github.com/altercation/vim-colors-solarized for the settings.
 
 Plug 'altercation/vim-colors-solarized'
+
 
 " NERD Tree
 " ---------
@@ -169,11 +205,13 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+
 " vim-repeat
 " ----------
 " Let the . shortcut work with plug-ins!
 
 Plug 'tpope/vim-repeat'
+
 
 " vim-surround
 " ------------
@@ -182,11 +220,13 @@ Plug 'tpope/vim-repeat'
 
 Plug 'tpope/vim-surround'
 
+
 " jedi-vim
 " --------
 " Awesome autocompletion. See https://github.com/davidhalter/jedi-vim.
 
 Plug 'davidhalter/jedi-vim'
+
 
 " delimitMate
 " -----------
@@ -194,6 +234,7 @@ Plug 'davidhalter/jedi-vim'
 " ":help delimitMate" for the details.
 
 Plug 'Raimondi/delimitMate'
+
 
 " vim-tmux-navigator
 " ------------------

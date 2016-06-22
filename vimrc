@@ -67,28 +67,20 @@ Plug 'tpope/vim-obsession'
 Plug 'fatih/vim-go', { 'tag': '*' }
 
 
-" vim-gitgutter
-" -------------
-" Add Git status symbols in the gutter for the relevant lines.
-
-Plug 'airblade/vim-gitgutter'
-
-
 " vim-signify
 " -----------
 " Add gutter status symbols for a whole bunch of VCS. So like vim-gitgutter,
-" just more generic. We explicitly configure it to ignore git repos, since
-" that's gitgutter's turf. (TODO: implement airline compatibility then do away
-" with gitgutter?)
+" just more generic.
 " ']c', '[c' to navigate between hunks.
 " New motions 'ic', 'ac' operate on current hunk.
 
 Plug 'mhinz/vim-signify'
 
-let g:signify_vcs_list               = [ 'perforce', 'hg'  ]
+let g:signify_vcs_list               = ['perforce', 'git', 'hg']
 let g:signify_sign_delete            = '-'
 let g:signify_sign_delete_first_line = '-'
 let g:signify_sign_change            = '~'
+let g:signify_sign_changedelete      = g:signify_sign_change
 
 
 " vim-eunuch

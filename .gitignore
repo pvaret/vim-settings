@@ -5,3 +5,4 @@ tags
 .hg/
 cache/
 plugged/
+vim/autoload/plug.vim.old

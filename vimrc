@@ -237,6 +237,14 @@ Plug 'Raimondi/delimitMate'
 Plug 'christoomey/vim-tmux-navigator'
 
 
+" ConradIrwin/vim-bracketed-paste
+" -------------------------------
+" Automatically switch to paste mode when pasting stuff inside a term. Or in
+" other words, total magic.
+
+Plug 'ConradIrwin/vim-bracketed-paste'
+
+
 " Finalize vim-plug loading.
 
 call plug#end()

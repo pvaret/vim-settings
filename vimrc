@@ -14,6 +14,13 @@ endif
 call plug#begin('~/.vim/plugged')
 
 
+" vim-startify
+" ------------
+" Nice and friendly start screen that shows bookmarks and current sessions.
+
+Plug 'mhinz/vim-startify'
+
+
 " Vimroom
 " -------
 " Convenient layout for writing.

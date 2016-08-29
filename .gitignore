@@ -3,6 +3,7 @@
 vim/.netrwhist
 tags
 .hg/
-cache/
-plugged/
+vim/cache/
+vim/plugged/
 vim/autoload/plug.vim.old
+vim/session/

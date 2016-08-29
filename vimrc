@@ -401,6 +401,7 @@ let g:airline#extensions#syntastic#enabled=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tagbar#enabled=1
 let g:airline#extensions#hunks#non_zero_only=1
+let g:airline#extensions#obsession#enabled=1
 
 "Disable somewhat noisy line number symbol.
 let g:airline_symbols = {}

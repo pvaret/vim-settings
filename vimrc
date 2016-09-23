@@ -252,6 +252,14 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'ConradIrwin/vim-bracketed-paste'
 
 
+" Codi
+" ----
+" Awesome interactive scratchpad for Python and others.
+" Start with ':Codi' in a Python buffer or ':Codi python' elsewhere.
+
+Plug 'metakirby5/codi.vim'
+
+
 " Finalize vim-plug loading.
 
 call plug#end()

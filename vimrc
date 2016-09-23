@@ -271,14 +271,17 @@ call plug#end()
 syntax on
 
 "Allow Vim to use 256 colors (for some color scheme):
-set t_Co=256
+"set t_Co=256
+"Tentatively disabled on 2016/09/01. The TERM should be set to
+"'something-256color' externally.
 
 "Disable Background Color Erase (BCE) so that color schemes work properly when
 "Vim is used inside tmux and screen.
 "See http://snk.tuxfamily.org/log/vim-256color-bce.html
-if &term =~ '256color'
-  set t_ut=
-endif
+"if &term =~ '256color'
+""  set t_ut=
+"endif
+"Tentatively disabled on 2019/09/01: same as above.
 
 "Vim fails to detect that our tmux setup sends xterm keys. We work around that here.
 "Without this, Ctrl-* shortcuts don't work. "screen-256color" is the TERM that
@@ -409,6 +412,7 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tagbar#enabled=1
 let g:airline#extensions#hunks#non_zero_only=1
 let g:airline#extensions#obsession#enabled=1
+let g:airline#extensions#obsession#indicator_text='✇'
 
 "Disable somewhat noisy line number symbol.
 let g:airline_symbols = {}

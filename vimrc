@@ -260,6 +260,15 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'metakirby5/codi.vim'
 
 
+" vim-dispatch
+" ------------
+" Adds the ":Dispatch" command, which runs command line tools asynchronously in
+" an automatically opened tmux window. Can also run tasks entirely in the
+" background with ":Dispatch!" and focus the new window with ":Start".
+
+Plug 'tpope/vim-dispatch'
+
+
 " Finalize vim-plug loading.
 
 call plug#end()
@@ -289,7 +298,7 @@ syntax on
 "if &term =~ '256color'
 ""  set t_ut=
 "endif
-"Tentatively disabled on 2019/09/01: same as above.
+"Tentatively disabled on 2016/09/01: same as above.
 
 "Vim fails to detect that our tmux setup sends xterm keys. We work around that here.
 "Without this, Ctrl-* shortcuts don't work. "screen-256color" is the TERM that

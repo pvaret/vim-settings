@@ -68,7 +68,7 @@ Plug 'tpope/vim-obsession'
 " vim-go
 " ------
 " Extensive set of Go-related plugins.
-" See Plug 'fatih/vim-go'.
+" See https://github.com/fatih/vim-go.
 " Use a tagged release for stability.
 
 Plug 'fatih/vim-go', { 'tag': '*' }
@@ -342,9 +342,6 @@ set completeopt=longest,menu
 
 "Open vertical split to the right by default:
 set splitright
-
-"Change dirs automatically when switching buffers.
-"set autochdir   "Causes some problems with some plugins.
 
 "Wait 1 secs before cancelling an unfinished command.
 set timeoutlen=1000

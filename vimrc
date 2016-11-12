@@ -289,9 +289,10 @@ Plug 'sirver/ultisnips'
 " YouCompleteMe
 " -------------
 " Solid instantaneous completion engine for a lot of languages.
-" A bit heavy, but very handy.
+" A bit heavy, but very handy. Requires a heavy download and then an
+" installation step.
 
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': '~/.vim/plugged/YouCompleteMe/install.py --clang-completer --gocode-completer' }
 
 
 " Finalize vim-plug loading.

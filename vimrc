@@ -24,7 +24,7 @@ Plug 'mhinz/vim-startify'
 " Vimroom
 " -------
 " Convenient layout for writing.
-" Trigger with :VimroomToggle.
+" Trigger with ":VimroomToggle".
 
 Plug 'mikewest/vimroom'
 
@@ -33,7 +33,7 @@ Plug 'mikewest/vimroom'
 " ---
 " Super fast file finder.
 " Installs to its own directory because it can work standalone.
-" Also provides shell shortcuts: ctrl-T, ctrl-R, alt-C. See
+" Also provides shell shortcuts: "ctrl-T", "ctrl-R", "alt-C". See
 " https://github.com/junegunn/fzf.
 " TODO: Disable and remove CtrlP, which it replaces.
 
@@ -42,7 +42,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " vim-online-thesaurus
 " --------------------
-" <localleader>K to look up the word under the cursor.
+" ",K" to look up the word under the cursor.
 
 Plug 'beloglazov/vim-online-thesaurus'
 
@@ -50,9 +50,9 @@ Plug 'beloglazov/vim-online-thesaurus'
 " vim-argumentative
 " -----------------
 " Add grammar objects for function arguments.
-" Shift arguments with <, and >,
-" Move between argument boundaries with [, and ],
-" New text objects a, and i,
+" Shift arguments with "<," and ">,".
+" Move between argument boundaries with "[," and "],".
+" New text objects "a," and "i,".
 
 Plug 'PeterRincker/vim-argumentative'
 
@@ -60,7 +60,7 @@ Plug 'PeterRincker/vim-argumentative'
 " vim-obsession
 " -------------
 " Improves several aspects of sessions. If a session is loaded (or started with
-" :Obsess) it stays updated automatically.
+" ":Obsess") it stays updated automatically.
 
 Plug 'tpope/vim-obsession'
 
@@ -109,6 +109,7 @@ Plug 'easymotion/vim-easymotion'
 
 
 " vim-css-color
+" -------------
 " Colorize colors in CSS files.
 
 Plug 'skammer/vim-css-color'
@@ -158,7 +159,8 @@ Plug 'scrooloose/syntastic'
 " --------
 " Plug-in to use <Tab> for completions, because, y'know.
 
-Plug 'ervandew/supertab'
+" DISABLED on 2016/11/12: Trying YouCompleteMe instead.
+"Plug 'ervandew/supertab'
 
 
 " CtrlP
@@ -255,7 +257,7 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 " Codi
 " ----
 " Awesome interactive scratchpad for Python and others.
-" Start with ':Codi' in a Python buffer or ':Codi python' elsewhere.
+" Start with ":Codi" in a Python buffer or ":Codi python" elsewhere.
 
 Plug 'metakirby5/codi.vim'
 
@@ -282,6 +284,14 @@ Plug 'AndrewRadev/splitjoin.vim'
 " Good snippets plug-in. Integrates with vim-go.
 
 Plug 'sirver/ultisnips'
+
+
+" YouCompleteMe
+" -------------
+" Solid instantaneous completion engine for a lot of languages.
+" A bit heavy, but very handy.
+
+Plug 'Valloric/YouCompleteMe'
 
 
 " Finalize vim-plug loading.
@@ -344,7 +354,7 @@ set showcmd
 "Show matching brackets:
 set showmatch
 
-"Preferred tabbing mode.
+"Preferred default tabbing mode.
 set expandtab
 set shiftwidth=2
 set softtabstop=2
@@ -500,6 +510,9 @@ let g:go_highlight_methods = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
+
+"Don't display list characters -- especially tabs -- in Go.
+au FileType go set nolist
 
 "Expand spaces and CR in delimitMate:
 let delimitMate_expand_cr = 1

@@ -71,7 +71,7 @@ Plug 'tpope/vim-obsession'
 " See https://github.com/fatih/vim-go.
 " Use a tagged release for stability.
 
-Plug 'fatih/vim-go', { 'tag': '*' }
+Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoInstallBinaries' }
 
 
 " vim-signify
@@ -269,6 +269,21 @@ Plug 'metakirby5/codi.vim'
 Plug 'tpope/vim-dispatch'
 
 
+" splitjoin.vim
+" -------------
+" Split lines into blocks and join blocks into lines.
+" Default shortcuts: "gS" and "gJ", respectively.
+
+Plug 'AndrewRadev/splitjoin.vim'
+
+
+" UltiSnips
+" ---------
+" Good snippets plug-in. Integrates with vim-go.
+
+Plug 'sirver/ultisnips'
+
+
 " Finalize vim-plug loading.
 
 call plug#end()
@@ -320,6 +335,9 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 "Load per-filetype plugins.
 filetype plugin indent on
 
+"Auto-save files. Works when calling make or GoBuild.
+set autowrite
+
 "Show partial commands in status line:
 set showcmd
 
@@ -356,21 +374,17 @@ set statusline=%<\ %n:%f\ %m%r%y\ %=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
 set laststatus=2
 
 "Keep some space between cursor and window border:
-set scrolloff=2
+set scrolloff=3
 
 "We're using a fast term, indeed.
 set ttyfast
 
-"Relative numbering (for vim 7.3)
-if version >= 703
-  set relativenumber
-endif
+"Relative numbering
+set relativenumber
 
-"Keep undo history (for vim 7.3)
-if version >= 703
-  set undofile
-  set undodir=/tmp/
-endif
+"Keep undo history
+set undofile
+set undodir=/tmp/
 
 "Search configuration
 set smartcase
@@ -463,16 +477,29 @@ let g:jedi#usages_command = "<leader>jn"
 let NERDDefaultAlign='left'
 
 "Let TagBar know it can use our Ubuntu-patched implementation of ctags for Go:
-let g:tagbar_type_go = {
-  \'ctagstype': 'go',
-  \'kinds': [
-    \'p:package',
-    \'f:function',
-    \'v:variables',
-    \'t:type',
-    \'c:const'
-  \]
-\}
+"Disabled on 2016/11/05: is this still needed?
+"let g:tagbar_type_go = {
+"  \'ctagstype': 'go',
+"  \'kinds': [
+"    \'p:package',
+"    \'f:function',
+"    \'v:variables',
+"    \'t:type',
+"    \'c:const'
+"  \]
+"\}
+
+"Automatically compute imports on save. Lovely!
+let g:go_fmt_command = "goimports"
+
+"Highlight Go things.
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
 
 "Expand spaces and CR in delimitMate:
 let delimitMate_expand_cr = 1
@@ -566,6 +593,26 @@ nnoremap <silent> <leader>O <ESC>O<ESC>
 
 "Disable Ex mode. :|
 map Q <Nop>
+
+"Build Go code or compile tests based on file name:
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#cmd#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+autocmd FileType go nmap <leader>gb :<C-u>call <SID>build_go_files()<CR>
+
+"Run current Go file:
+autocmd FileType go nmap <leader>gr <Plug>(go-run)
+
+"Run Go tests:
+autocmd FileType go nmap <leader>gt <Plug>(go-test)
+
+"Show/hide Go test coverage:
+autocmd FileType go nmap <Leader>gc <Plug>(go-coverage-toggle)
 
 
 " LOCAL OVERRIDES

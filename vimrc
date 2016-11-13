@@ -163,14 +163,6 @@ Plug 'godlygeek/tabular'
 Plug 'scrooloose/syntastic'
 
 
-" Supertab
-" --------
-" Plug-in to use <Tab> for completions, because, y'know.
-
-" DISABLED on 2016/11/12: Trying YouCompleteMe instead.
-"Plug 'ervandew/supertab'
-
-
 " CtrlP
 " -----
 " Awesome fuzzy file finder.
@@ -303,12 +295,16 @@ Plug 'sirver/ultisnips'
 Plug 'Valloric/YouCompleteMe', { 'do': '~/.vim/plugged/YouCompleteMe/install.py --clang-completer --gocode-completer' }
 
 
+" Seoul256
+" --------
+" A soft color theme. Load with "colorscheme".
+
+Plug 'junegunn/seoul256.vim'
+
+
 " Finalize vim-plug loading.
 
 call plug#end()
-
-
-" TODO: Look into YouCompleteMe when it can use a non-beta version of vim.
 
 
 " GENERAL PREFERENCES
@@ -342,8 +338,10 @@ if &term == "screen-256color"
 endif
 
 "Setup color scheme:
-set background=dark
-colorscheme solarized
+"set background=dark
+"colorscheme solarized
+set background=light
+colorscheme seoul256-light
 
 "Set Vim shell to the simplest thing available, for plugins that need it:
 set shell=/bin/bash
@@ -415,6 +413,10 @@ set hlsearch
 "General format options.
 set formatoptions-=o formatoptions+=rqc
 
+"Silence completion messages like "match 1 of 2", which get spammy with
+"plugins like YouCompleteMe.
+set shortmess+=c
+
 "Python-specific format options:
 autocmd Filetype python setlocal formatoptions-=t formatoptions+=l
 autocmd Filetype python setlocal textwidth=79
@@ -449,7 +451,8 @@ let g:SuperTabClosePreviewOnPopupClose=1
 "Set up airline.
 let g:airline_powerline_fonts=1
 let g:airline_inactive_collapse=1
-let g:airline_theme='solarized'
+"let g:airline_theme='solarized'
+let g:airline_theme='zenburn'  " Goes well with seoul256
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
 "And its extensions.
@@ -531,7 +534,7 @@ au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
 
 "Limelight can't compute the proper colors for Solarized, so we let it know
 "manually.
-let g:limelight_conceal_ctermfg = 241
+"let g:limelight_conceal_ctermfg = 241  " DISABLED while we try out Seoul256.
 
 "Toggle Limelight alongside Goyo:
 autocmd! User GoyoEnter Limelight

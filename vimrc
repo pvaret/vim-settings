@@ -21,12 +21,20 @@ call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'
 
 
-" Vimroom
-" -------
-" Convenient layout for writing.
-" Trigger with ":VimroomToggle".
+" Goyo
+" ----
+" Distraction-free writing plug-in. Basically VimRoom, but improved.
+" Can make use of Limelight for even more focus. Toggle with ":Goyo".
 
-Plug 'mikewest/vimroom'
+Plug 'junegunn/goyo.vim'
+
+
+" Limelight
+" ---------
+" Use brighter colors in the paragraph where the cursor is.
+" Toggle with ":Limelight!!".
+
+Plug 'junegunn/limelight.vim'
 
 
 " FZF
@@ -521,6 +529,14 @@ let delimitMate_expand_space = 1
 "Also recognize triple quotes in Python:
 au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
 
+"Limelight can't compute the proper colors for Solarized, so we let it know
+"manually.
+let g:limelight_conceal_ctermfg = 241
+
+"Toggle Limelight alongside Goyo:
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
 
 " SHORTCUTS
 " =========
@@ -598,8 +614,8 @@ nnoremap <silent> <leader>nc <ESC>:tabclose<CR>
 "Toggle folding:
 noremap <space> zA
 
-"Toggle VimRoom:
-nmap <leader>zz :VimroomToggle<cr>
+"Toggle Goyo:
+nmap <leader>zz :Goyo<cr>
 
 "Add empty line above/below:
 nnoremap <silent> <leader>o <ESC>o<ESC>

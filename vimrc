@@ -1,3 +1,7 @@
+"Explicitly set this script's encoding, so it doesn't fail under other locales.
+scriptencoding utf-8
+
+
 " LOCAL OVERRIDES (EARLY)
 " =======================
 
@@ -290,9 +294,11 @@ Plug 'sirver/ultisnips'
 " -------------
 " Solid instantaneous completion engine for a lot of languages.
 " A bit heavy, but very handy. Requires a heavy download and then an
-" installation step.
+" installation step, so only use if explicitly activated in .vimrc.local.early.
 
-Plug 'Valloric/YouCompleteMe', { 'do': '~/.vim/plugged/YouCompleteMe/install.py --clang-completer --gocode-completer' }
+if exists("g:do_activate_youcompleteme") && g:do_activate_youcompleteme == 1
+  Plug 'Valloric/YouCompleteMe', { 'do': '~/.vim/plugged/YouCompleteMe/install.py --clang-completer --gocode-completer' }
+endif
 
 
 " Seoul256

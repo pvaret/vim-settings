@@ -331,10 +331,9 @@ syntax on
 "Disable Background Color Erase (BCE) so that color schemes work properly when
 "Vim is used inside tmux and screen.
 "See http://snk.tuxfamily.org/log/vim-256color-bce.html
-"if &term =~ '256color'
-""  set t_ut=
-"endif
-"Tentatively disabled on 2016/09/01: same as above.
+if &term =~ '256color'
+  set t_ut=
+endif
 
 "Vim fails to detect that our tmux setup sends xterm keys. We work around that here.
 "Without this, Ctrl-* shortcuts don't work. "screen-256color" is the TERM that

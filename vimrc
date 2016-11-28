@@ -1,4 +1,5 @@
-"Explicitly set this script's encoding, so it doesn't fail under other locales.
+" Explicitly set this script's encoding, so it doesn't fail under other
+" locales.
 scriptencoding utf-8
 
 
@@ -320,147 +321,149 @@ call plug#end()
 " accordingly.
 
 
-"We do in fact want syntax coloring:
+" We do in fact want syntax coloring:
 syntax on
 
-"Allow Vim to use 256 colors (for some color scheme):
-"set t_Co=256
-"Tentatively disabled on 2016/09/01. The TERM should be set to
-"'something-256color' externally.
-
-"Disable Background Color Erase (BCE) so that color schemes work properly when
-"Vim is used inside tmux and screen.
-"See http://snk.tuxfamily.org/log/vim-256color-bce.html
-if &term =~ '256color'
-  set t_ut=
-endif
-
-"Vim fails to detect that our tmux setup sends xterm keys. We work around that here.
-"Without this, Ctrl-* shortcuts don't work. "screen-256color" is the TERM that
-"tmux advertises by default.
+" Vim fails to detect that our tmux setup sends xterm keys. We work around
+" that here.  Without this, Ctrl-* shortcuts don't work. "screen-256color" is
+" the TERM that tmux advertises by default.
 if &term == "screen-256color"
     set term=xterm-256color
 endif
 
-"Setup color scheme:
+" Allow Vim to use 256 colors (for some color scheme):
+"set t_Co=256
+" Tentatively disabled on 2016/09/01. The TERM should be set to
+" 'something-256color' externally.
+
+" Disable Background Color Erase (BCE) so that color schemes work properly
+" when Vim is used inside tmux and screen. This is because we set the term to
+" "xterm-256color" just above, which is a lie, and means we need to duct-tape
+" this here.
+" See http://snk.tuxfamily.org/log/vim-256color-bce.html
+if &term =~ '256color'
+  set t_ut=
+endif
+
+" Setup color scheme:
 "set background=dark
 "colorscheme solarized
 set background=light
 colorscheme seoul256-light
 
-"Set Vim shell to the simplest thing available, for plugins that need it:
+" Set Vim shell to the simplest thing available, for plugins that need it:
 set shell=/bin/bash
 
-"Jump to the last position when reopening a file:
+" Jump to the last position when reopening a file:
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-"Load per-filetype plugins.
+" Load per-filetype plugins.
 filetype plugin indent on
 
-"Auto-save files. Works when calling make or GoBuild.
+" Auto-save files. Works when calling make or GoBuild.
 set autowrite
 
-"Show partial commands in status line:
+" Show partial commands in status line:
 set showcmd
 
-"Show matching brackets:
+" Show matching brackets:
 set showmatch
 
-"Preferred default tabbing mode.
+" Preferred default tabbing mode.
 set expandtab
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 
-"But allow files to override those settings:
+" But allow files to override those settings:
 set modeline
 
-"Preferred completion mode:
+" Preferred completion mode:
 set wildmenu
 set wildmode=longest:full,full
 set completeopt=longest,menu
 
-"Open vertical split to the right by default:
+" Open vertical split to the right by default:
 set splitright
 
-"Wait 1 secs before cancelling an unfinished command.
+" Wait 1 secs before cancelling an unfinished command.
 set timeoutlen=1000
 
-"Display cursor line.
+" Display cursor line.
 set cursorline
 
-"Extended status bar:
+" Extended status bar:
 set statusline=%<\ %n:%f\ %m%r%y\ %=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
 
-"Always display the status bar:
+" Always display the status bar:
 set laststatus=2
 
-"Keep some space between cursor and window border:
+" Keep some space between cursor and window border:
 set scrolloff=3
 
-"We're using a fast term, indeed.
+" We're using a fast term, indeed.
 set ttyfast
 
-"Relative numbering
+" Relative numbering
 set relativenumber
 
-"Keep undo history
+" Keep undo history
 set undofile
 set undodir=/tmp/
 
-"Search configuration
+" Search configuration
 set smartcase
 set gdefault
 set incsearch
 set showmatch
 set hlsearch
 
-"General format options.
+" General format options.
 set formatoptions-=o formatoptions+=rqc
 
-"Silence completion messages like "match 1 of 2", which get spammy with
-"plugins like YouCompleteMe.
+" Silence completion messages like "match 1 of 2", which get spammy with
+" plugins like YouCompleteMe.
 set shortmess+=c
 
-"Python-specific format options:
+" Python-specific format options:
 autocmd Filetype python setlocal formatoptions-=t formatoptions+=l
 autocmd Filetype python setlocal textwidth=79
 autocmd Filetype python setlocal comments=b:##,O:#
 
-"Override unfortunate silliness in GetPythonIndent():
+" Override unfortunate silliness in GetPythonIndent():
 let g:pyindent_open_paren=0
 let g:pyindent_nested_paren=0
 
-"Highlight space characters:
+" Highlight space characters:
 set list
 set listchars=tab:»·,trail:·
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace "\s\+$"
 
-"Highlight characters > 80 column in Python files:
+" Highlight characters > 80 column in Python files:
 highlight OverColLimit term=inverse,bold cterm=bold ctermbg=red ctermfg=white gui=bold guibg=red guifg=white
 autocmd Filetype python 2match OverColLimit "\%>79v.\+"
 
-"Ignore Python object files:
+" Ignore Python object files:
 set wildignore+=*.pyc,*.pyo
 
 
 " PLUGIN CONFIGURATION
 " ====================
 
-"SuperTab configuration:
+" SuperTab configuration:
 let g:SuperTabDefaultCompletionType="context"
 let g:SuperTabClosePreviewOnPopupClose=1
 
-"Set up airline.
+" Set up airline.
 let g:airline_powerline_fonts=1
 let g:airline_inactive_collapse=1
 "let g:airline_theme='solarized'
 let g:airline_theme='zenburn'  " Goes well with seoul256
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
-"And its extensions.
+" And its extensions.
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#syntastic#enabled=1
 let g:airline#extensions#tabline#enabled=1
@@ -469,42 +472,43 @@ let g:airline#extensions#hunks#non_zero_only=1
 let g:airline#extensions#obsession#enabled=1
 let g:airline#extensions#obsession#indicator_text='✇'
 
-"Disable somewhat noisy line number symbol.
+" Disable somewhat noisy line number symbol.
 let g:airline_symbols = {}
 let g:airline_symbols.maxlinenr = ''
 
-"Ack configuration:
+" Ack configuration:
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
-"Load correct check for Syntastic on Python:
+" Load correct check for Syntastic on Python:
 let g:syntastic_python_checkers=['flake8', 'python']
 let $PYFLAKES_NODOCTEST=1
 
-"Let Jedi configure Vim to suit its needs.
+" Let Jedi configure Vim to suit its needs.
 let g:jedi#auto_vim_configuration = 1
 
-"Don't popup Jedi completion whenever a dot is entered:
+" Don't popup Jedi completion whenever a dot is entered:
 let g:jedi#popup_on_dot = 0
 
-"Don't show function definitions when opening a paren; it's nice but a bit
-"buggy:
+" Don't show function definitions when opening a paren; it's nice but a bit
+" buggy:
 let g:jedi#show_call_signatures = 0
 
-"Override Jedi shortcuts to avoid conflicts with other plugins:
+" Override Jedi shortcuts to avoid conflicts with other plugins:
 let g:jedi#goto_command = "<leader>jg"
 let g:jedi#goto_definitions_command = "<leader>jd"
 let g:jedi#rename_command = "<leader>jr"
 let g:jedi#usages_command = "<leader>jn"
 
-"OTOH, we want the standard shortcut for autocompletion:
-"XXX Doesn't work. Investigate later.
+" OTOH, we want the standard shortcut for autocompletion:
+" XXX Doesn't work. Investigate later.
 "let g:jedi#autocompletion_command = "<C-Space>"
 
-"Align comments to the left by default.
+" Align comments to the left by default.
 let NERDDefaultAlign='left'
 
-"Let TagBar know it can use our Ubuntu-patched implementation of ctags for Go:
-"Disabled on 2016/11/05: is this still needed?
+" Let TagBar know it can use our Ubuntu-patched implementation of ctags for
+" Go:
+" Disabled on 2016/11/05: is this still needed?
 "let g:tagbar_type_go = {
 "  \'ctagstype': 'go',
 "  \'kinds': [
@@ -516,10 +520,10 @@ let NERDDefaultAlign='left'
 "  \]
 "\}
 
-"Automatically compute imports on save. Lovely!
+" Automatically compute imports on save. Lovely!
 let g:go_fmt_command = "goimports"
 
-"Highlight Go things.
+" Highlight Go things.
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
@@ -528,20 +532,20 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 
-"Don't display list characters -- especially tabs -- in Go.
+" Don't display list characters -- especially tabs -- in Go.
 au FileType go set nolist
 
-"Expand spaces and CR in delimitMate:
+" Expand spaces and CR in delimitMate:
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
-"Also recognize triple quotes in Python:
+" Also recognize triple quotes in Python:
 au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
 
-"Limelight can't compute the proper colors for Solarized, so we let it know
-"manually.
+" Limelight can't compute the proper colors for Solarized, so we let it know
+" manually.
 "let g:limelight_conceal_ctermfg = 241  " DISABLED while we try out Seoul256.
 
-"Toggle Limelight alongside Goyo:
+" Toggle Limelight alongside Goyo:
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
@@ -549,15 +553,15 @@ autocmd! User GoyoLeave Limelight!
 " SHORTCUTS
 " =========
 
-"Cd to current buffer's directory
+" Cd to current buffer's directory
 command! CD :execute ":lcd " . expand("%:p:h")
 
-"Remap window switching keys:
+" Remap window switching keys:
 "noremap <C-Down>  <C-W>j
 "noremap <C-Up>    <C-W>k
 "noremap <C-Left>  <C-W>h
 "noremap <C-Right> <C-W>l
-"Remap window switching keys with tmux-navigator compatibility:
+" Remap window switching keys with tmux-navigator compatibility:
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <C-Left> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-Down> :TmuxNavigateDown<cr>
@@ -565,74 +569,74 @@ nnoremap <silent> <C-Up> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
 
-"Convenient shortcut:
+" Convenient shortcut:
 set pastetoggle=<F10>
 
-"Make help easier to browse help with convenient shortcuts:
+" Make help easier to browse help with convenient shortcuts:
 autocmd Filetype help nnoremap <buffer><CR> <c-]>
 autocmd Filetype help nnoremap <buffer><BS> <c-T>
 autocmd Filetype help nnoremap <buffer>q :close<CR>
 
-"Close quickfix window more conveniently:
+" Close quickfix window more conveniently:
 autocmd Filetype qf nnoremap <buffer>q :lclose<CR>
 
-"Use standard regex in searches by default:
+" Use standard regex in searches by default:
 nnoremap / /\v
 vnoremap / /\v
 
-"Better leader than the default:
+" Better leader than the default:
 let mapleader=","
 let maplocalleader=","
 
-"Bind key shortcut for NERDtree:
+" Bind key shortcut for NERDtree:
 nnoremap <silent> <Leader>f <ESC>:NERDTreeToggle<CR>
 
-"Bind key shortcut for TagBar:
+" Bind key shortcut for TagBar:
 nnoremap <silent> <Leader>t <ESC>:TagbarToggle<CR>
 nnoremap <silent> <Leader>T <ESC>:TagbarOpenAutoClose<CR>
 
-"Align first = in line:
+" Align first = in line:
 nnoremap <silent> <Leader>= <ESC>:Tabularize /^[^=]*\zs=<CR>
 
-"Align colon declarations:
+" Align colon declarations:
 nnoremap <silent> <Leader>: <ESC>:Tabularize /:\zs/l0l1<CR>
 
-"Bind key shortcut for Ack:
-"TODO: Consider replacing with Ag.
+" Bind key shortcut for Ack:
+" TODO: Consider replacing with Ag.
 nnoremap <leader>a <ESC>:LAck<space>
 nnoremap <leader>A <ESC>"9yiw:LAck<space>-w<space><C-R>9<CR>
 vnoremap <leader>A "9y:LAck<space>"<C-R>9"<CR>
 
-"Clear searches with this:
+" Clear searches with this:
 nnoremap <leader><space> :noh<CR>
 
-"Delete trailing whitespace with this:
+" Delete trailing whitespace with this:
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
-"Select last pasted text:
+" Select last pasted text:
 nnoremap <leader>v V`]
 
-"Open vertical split and switch to it:
+" Open vertical split and switch to it:
 nnoremap <leader>w <C-w>v<C-w>l
 
-"Open new tab with current file:
+" Open new tab with current file:
 nnoremap <silent> <leader>nn <ESC>:tabnew<CR>
 nnoremap <silent> <leader>nc <ESC>:tabclose<CR>
 
-"Toggle folding:
+" Toggle folding:
 noremap <space> zA
 
-"Toggle Goyo:
+" Toggle Goyo:
 nmap <leader>zz :Goyo<cr>
 
-"Add empty line above/below:
+" Add empty line above/below:
 nnoremap <silent> <leader>o <ESC>o<ESC>
 nnoremap <silent> <leader>O <ESC>O<ESC>
 
-"Disable Ex mode. :|
+" Disable Ex mode. :|
 map Q <Nop>
 
-"Build Go code or compile tests based on file name:
+" Build Go code or compile tests based on file name:
 function! s:build_go_files()
   let l:file = expand('%')
   if l:file =~# '^\f\+_test\.go$'
@@ -643,13 +647,13 @@ function! s:build_go_files()
 endfunction
 autocmd FileType go nmap <leader>gb :<C-u>call <SID>build_go_files()<CR>
 
-"Run current Go file:
+" Run current Go file:
 autocmd FileType go nmap <leader>gr <Plug>(go-run)
 
-"Run Go tests:
+" Run Go tests:
 autocmd FileType go nmap <leader>gt <Plug>(go-test)
 
-"Show/hide Go test coverage:
+" Show/hide Go test coverage:
 autocmd FileType go nmap <Leader>gc <Plug>(go-coverage-toggle)
 
 

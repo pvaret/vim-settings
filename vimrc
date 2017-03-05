@@ -452,9 +452,10 @@ set wildignore+=*.pyc,*.pyo
 " PLUGIN CONFIGURATION
 " ====================
 
-" SuperTab configuration:
-let g:SuperTabDefaultCompletionType="context"
-let g:SuperTabClosePreviewOnPopupClose=1
+" YouCompleteMe configuration.
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
+let g:ycm_key_invoke_completion = '<TAB>'
+let g:ycm_auto_trigger = 0
 
 " Set up airline.
 let g:airline_powerline_fonts=1

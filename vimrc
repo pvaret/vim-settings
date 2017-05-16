@@ -139,7 +139,7 @@ Plug 'vim-airline/vim-airline-themes'
 " NERD Commenter
 " --------------
 " Commenting made easy.
-" ",cc" to comment. ",cu" tu uncomment. ",c<space>" to toggle.
+" ",cc" to comment. ",cu" tu uncomment. ",c<Space>" to toggle.
 " ",cy" to yank before commenting.
 " Loads more options! See https://github.com/scrooloose/nerdcommenter.
 
@@ -453,8 +453,7 @@ set wildignore+=*.pyc,*.pyo
 " ====================
 
 " YouCompleteMe configuration.
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
-let g:ycm_key_invoke_completion = '<TAB>'
+let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_auto_trigger = 0
 
 " Set up airline.
@@ -484,25 +483,29 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 let g:syntastic_python_checkers=['flake8', 'python']
 let $PYFLAKES_NODOCTEST=1
 
-" Let Jedi configure Vim to suit its needs.
-let g:jedi#auto_vim_configuration = 1
+if exists("g:do_activate_youcompleteme") && g:do_activate_youcompleteme == 1
+  " We want Jedi for its features, but completion is provided by YCM.
+  let g:jedi#completions_enabled = 0
 
-" Don't popup Jedi completion whenever a dot is entered:
-let g:jedi#popup_on_dot = 0
+else
 
-" Don't show function definitions when opening a paren; it's nice but a bit
-" buggy:
-let g:jedi#show_call_signatures = 0
+  " Let Jedi configure Vim to suit its needs.
+  let g:jedi#auto_vim_configuration = 1
+
+  " Don't popup Jedi completion whenever a dot is entered:
+  let g:jedi#popup_on_dot = 0
+
+  " Don't show function definitions when opening a paren; it's nice but a bit
+  " buggy:
+  let g:jedi#show_call_signatures = 0
+
+endif
 
 " Override Jedi shortcuts to avoid conflicts with other plugins:
 let g:jedi#goto_command = "<leader>jg"
 let g:jedi#goto_definitions_command = "<leader>jd"
 let g:jedi#rename_command = "<leader>jr"
 let g:jedi#usages_command = "<leader>jn"
-
-" OTOH, we want the standard shortcut for autocompletion:
-" XXX Doesn't work. Investigate later.
-"let g:jedi#autocompletion_command = "<C-Space>"
 
 " Align comments to the left by default.
 let NERDDefaultAlign='left'
@@ -612,7 +615,7 @@ vnoremap <leader>A "9y:LAck<space>"<C-R>9"<CR>
 nnoremap <leader><space> :noh<CR>
 
 " Delete trailing whitespace with this:
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+nnoremap <leader>W mz:%s/\s\+$//<cr>:let @/=''<CR>`z
 
 " Select last pasted text:
 nnoremap <leader>v V`]

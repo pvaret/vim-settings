@@ -476,6 +476,13 @@ let g:airline#extensions#obsession#indicator_text='✇'
 let g:airline_symbols = {}
 let g:airline_symbols.maxlinenr = ''
 
+" Don't display empty section at all (errors, typically). Incurs a small
+" performance penalty.
+let g:airline_skip_empty_sections = 1
+
+" More compact line/column section.
+let g:airline_section_z = "%{airline#util#wrap(airline#extensions#obsession#get_status(),0)} %#__accent_bold#%l%#__restore__#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__#:%v"
+
 " Ack configuration:
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 

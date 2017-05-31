@@ -564,6 +564,10 @@ autocmd! User GoyoLeave Limelight!
 " SHORTCUTS
 " =========
 
+" Better leader than the default:
+let mapleader=","
+let maplocalleader=","
+
 " Cd to current buffer's directory
 command! CD :execute ":lcd " . expand("%:p:h")
 
@@ -595,9 +599,13 @@ autocmd Filetype qf nnoremap <buffer>q :lclose<CR>
 nnoremap / /\v
 vnoremap / /\v
 
-" Better leader than the default:
-let mapleader=","
-let maplocalleader=","
+" Toggle YouCompleteMe autocompletion:
+nnoremap <silent> <leader>y :let g:ycm_auto_trigger=1-g:ycm_auto_trigger<CR>
+
+" Trigger Dispatch.
+" (Set g:dispatch to the command to be run in Dispatch globally. Make it
+" t:dispatch for the current tab and b:dispatch for the current buffer.)
+nnoremap <silent> <F9> :Dispatch<CR>
 
 " Bind key shortcut for NERDtree:
 nnoremap <silent> <Leader>f <ESC>:NERDTreeToggle<CR>

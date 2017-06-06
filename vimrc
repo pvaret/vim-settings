@@ -560,6 +560,8 @@ au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
+" By default, open new buffer when selecting a file in BuExplorer.
+let g:bufExplorerFindActive = 0
 
 " SHORTCUTS
 " =========
@@ -600,12 +602,15 @@ nnoremap / /\v
 vnoremap / /\v
 
 " Toggle YouCompleteMe autocompletion:
-nnoremap <silent> <leader>y :let g:ycm_auto_trigger=1-g:ycm_auto_trigger<CR>
+nnoremap <silent> <leader>yy :let g:ycm_auto_trigger=1-g:ycm_auto_trigger<CR>:echo "Autocompletion toggled."<CR>
+nnoremap <silent> <leader>yd :YcmCompleter GoToDeclaration<CR>
+nnoremap <silent> <leader>yh :YcmCompleter GoToDefinition<CR>
+nnoremap <silent> <leader>yf :YcmCompleter FixIt<CR>
 
 " Trigger Dispatch.
 " (Set g:dispatch to the command to be run in Dispatch globally. Make it
 " t:dispatch for the current tab and b:dispatch for the current buffer.)
-nnoremap <silent> <F9> :Dispatch<CR>
+nnoremap <silent> <F9> :wa<CR>:Dispatch<CR>
 
 " Bind key shortcut for NERDtree:
 nnoremap <silent> <Leader>f <ESC>:NERDTreeToggle<CR>

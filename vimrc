@@ -441,9 +441,10 @@ set listchars=tab:»·,trail:·
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace "\s\+$"
 
-" Highlight characters > 80 column in Python files:
+" Highlight characters > 80 column in certain files:
 highlight OverColLimit term=inverse,bold cterm=bold ctermbg=red ctermfg=white gui=bold guibg=red guifg=white
 autocmd Filetype python 2match OverColLimit "\%>79v.\+"
+autocmd Filetype cpp 2match OverColLimit "\%>79v.\+"
 
 " Ignore Python object files:
 set wildignore+=*.pyc,*.pyo
@@ -516,20 +517,6 @@ let g:jedi#usages_command = "<leader>jn"
 
 " Align comments to the left by default.
 let NERDDefaultAlign='left'
-
-" Let TagBar know it can use our Ubuntu-patched implementation of ctags for
-" Go:
-" Disabled on 2016/11/05: is this still needed?
-"let g:tagbar_type_go = {
-"  \'ctagstype': 'go',
-"  \'kinds': [
-"    \'p:package',
-"    \'f:function',
-"    \'v:variables',
-"    \'t:type',
-"    \'c:const'
-"  \]
-"\}
 
 " Automatically compute imports on save. Lovely!
 let g:go_fmt_command = "goimports"

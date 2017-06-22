@@ -276,6 +276,14 @@ Plug 'metakirby5/codi.vim'
 Plug 'tpope/vim-dispatch'
 
 
+" vim-windowswap
+" --------------
+" Adds a simple way to swap two windows. <leader>ww in a window to mark it,
+" <leader>ww in another window to swap it, without affecting the layout.
+
+Plug 'wesQ3/vim-windowswap'
+
+
 " splitjoin.vim
 " -------------
 " Split lines into blocks and join blocks into lines.
@@ -389,8 +397,17 @@ set splitright
 " Wait 1 secs before cancelling an unfinished command.
 set timeoutlen=1000
 
-" Display cursor line.
-set cursorline
+" Display cursor line in the current buffer.
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
+
+" Colorize the cursor line differently when in insert mode. Works well with the
+" seoul256 color scheme; might need updating with a different scheme.
+autocmd InsertEnter * highlight CursorLine term=underline ctermbg=14
+autocmd InsertLeave * highlight CursorLine term=underline ctermbg=252
 
 " Extended status bar:
 set statusline=%<\ %n:%f\ %m%r%y\ %=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)

@@ -135,6 +135,17 @@ Plug 'skammer/vim-css-color'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" tmuxline.vim
+" ------------
+" Configure the tmux status line from inside vim.
+" ":Tmuxline [theme] [preset]" applies the given Airline theme and tmuxline
+" preset (from autoload/tmuxline/presets/) to the tmux status line.
+" ":TmuxlineSnapshot [file]" saves that configuration to [file], to be loaded
+" from .tmux.conf.
+" By default it automatically applies the current Airline style.
+
+Plug 'edkolev/tmuxline.vim'
+
 
 " NERD Commenter
 " --------------

@@ -610,7 +610,7 @@ autocmd Filetype help nnoremap <buffer><BS> <c-T>
 autocmd Filetype help nnoremap <buffer>q :close<CR>
 
 " Close quickfix window more conveniently:
-autocmd Filetype qf nnoremap <buffer>q :lclose<CR>
+autocmd Filetype qf nnoremap <buffer>q :cclose<CR>
 
 " Use standard regex in searches by default:
 nnoremap / /\v

@@ -7,3 +7,4 @@ vim/cache/
 vim/plugged/
 vim/autoload/plug.vim.old
 vim/session/
+vim/tmuxline.conf

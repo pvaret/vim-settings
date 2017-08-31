@@ -455,7 +455,7 @@ set shortmess+=c
 
 " Python-specific format options:
 autocmd Filetype python setlocal formatoptions-=t formatoptions+=l
-autocmd Filetype python setlocal textwidth=79
+autocmd Filetype python setlocal textwidth=80
 autocmd Filetype python setlocal comments=b:##,O:#
 
 " Override unfortunate silliness in GetPythonIndent():
@@ -471,8 +471,8 @@ match ExtraWhitespace "\s\+$"
 
 " Highlight characters > 80 column in certain files:
 highlight OverColLimit term=inverse,bold cterm=bold ctermbg=red ctermfg=white gui=bold guibg=red guifg=white
-autocmd Filetype python 2match OverColLimit "\%>79v.\+"
-autocmd Filetype cpp 2match OverColLimit "\%>79v.\+"
+autocmd Filetype python 2match OverColLimit "\%>80.\+"
+autocmd Filetype cpp 2match OverColLimit "\%>80.\+"
 
 " Ignore Python object files:
 set wildignore+=*.pyc,*.pyo

@@ -471,8 +471,8 @@ match ExtraWhitespace "\s\+$"
 
 " Highlight characters > 80 column in certain files:
 highlight OverColLimit term=inverse,bold cterm=bold ctermbg=red ctermfg=white gui=bold guibg=red guifg=white
-autocmd Filetype python 2match OverColLimit "\%>80.\+"
-autocmd Filetype cpp 2match OverColLimit "\%>80.\+"
+autocmd Filetype python 2match OverColLimit "\%>80v.\+"
+autocmd Filetype cpp 2match OverColLimit "\%>80v.\+"
 
 " Ignore Python object files:
 set wildignore+=*.pyc,*.pyo

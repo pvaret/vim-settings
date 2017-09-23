@@ -48,7 +48,6 @@ Plug 'junegunn/limelight.vim'
 " Installs to its own directory because it can work standalone.
 " Also provides shell shortcuts: "ctrl-T", "ctrl-R", "alt-C". See
 " https://github.com/junegunn/fzf.
-" TODO: Disable and remove CtrlP, which it replaces.
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
@@ -179,13 +178,6 @@ Plug 'godlygeek/tabular'
 Plug 'scrooloose/syntastic'
 
 
-" CtrlP
-" -----
-" Awesome fuzzy file finder.
-
-Plug 'ctrlpvim/ctrlp.vim'
-
-
 " bufexplorer
 " -----------
 " Convenient buffer switcher. ",be" to open.
@@ -193,16 +185,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'corntrace/bufexplorer'
 
 
-" ack.vim
-" -------
-" Use ack from inside vim. Requires ack to be installed (d'uh).
-
-Plug 'mileszs/ack.vim'
-
-
 " ag.vim
 " ------
-" Ditto with ag. TODO: replace ack wih ag.
+" Use ag from inside vim. Requires ag to be installed (d'uh).
 
 Plug 'rking/ag.vim'
 
@@ -512,9 +497,6 @@ let g:airline_skip_empty_sections = 1
 " More compact line/column section.
 let g:airline_section_z = "%{airline#util#wrap(airline#extensions#obsession#get_status(),0)} %#__accent_bold#%l%#__restore__#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__#:%v"
 
-" Ack configuration:
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-
 " Load correct check for Syntastic on Python:
 let g:syntastic_python_checkers=['flake8', 'python']
 let $PYFLAKES_NODOCTEST=1
@@ -640,11 +622,10 @@ nnoremap <silent> <Leader>= <ESC>:Tabularize /^[^=]*\zs=<CR>
 " Align colon declarations:
 nnoremap <silent> <Leader>: <ESC>:Tabularize /:\zs/l0l1<CR>
 
-" Bind key shortcut for Ack:
-" TODO: Consider replacing with Ag.
-nnoremap <leader>a <ESC>:LAck<space>
-nnoremap <leader>A <ESC>"9yiw:LAck<space>-w<space><C-R>9<CR>
-vnoremap <leader>A "9y:LAck<space>"<C-R>9"<CR>
+" Bind key shortcut for Ag:
+nnoremap <leader>a <ESC>:LAg<space>
+nnoremap <leader>A <ESC>"9yiw:LAg<space>-w<space><C-R>9<CR>
+vnoremap <leader>A "9y:LAg<space>"<C-R>9"<CR>
 
 " Clear searches with this:
 nnoremap <leader><space> :noh<CR>

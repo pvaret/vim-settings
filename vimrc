@@ -268,6 +268,7 @@ Plug 'metakirby5/codi.vim'
 " Adds the ":Dispatch" command, which runs command line tools asynchronously in
 " an automatically opened tmux window. Can also run tasks entirely in the
 " background with ":Dispatch!" and focus the new window with ":Start".
+" Override the local dispatch action with ":let b:dispatch='command args'"
 
 Plug 'tpope/vim-dispatch'
 

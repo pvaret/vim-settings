@@ -456,9 +456,13 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace "\s\+$"
 
 " Highlight characters > 80 column in certain files:
-highlight OverColLimit term=inverse,bold cterm=bold ctermbg=red ctermfg=white gui=bold guibg=red guifg=white
-autocmd Filetype python 2match OverColLimit "\%>80v.\+"
-autocmd Filetype cpp 2match OverColLimit "\%>80v.\+"
+" DISABLED on 2017/11/29: Is the colorcolumn statement below sufficient?
+"highlight OverColLimit term=inverse,bold cterm=bold ctermbg=red ctermfg=white gui=bold guibg=red guifg=white
+"autocmd Filetype python 2match OverColLimit "\%>80v.\+"
+"autocmd Filetype cpp 2match OverColLimit "\%>80v.\+"
+
+" Show boundary at column textwidth+1:
+set colorcolumn=+1
 
 " Ignore Python object files:
 set wildignore+=*.pyc,*.pyo

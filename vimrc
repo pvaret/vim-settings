@@ -247,6 +247,13 @@ Plug 'Raimondi/delimitMate'
 Plug 'christoomey/vim-tmux-navigator'
 
 
+" vim-tmux-focus-events
+" ---------------------
+" Make FocusEnter and FocusLeave events work again when in tmux.
+
+Plug 'tmux-plugins/vim-tmux-focus-events'
+
+
 " ConradIrwin/vim-bracketed-paste
 " -------------------------------
 " Automatically switch to paste mode when pasting stuff inside a term. Or in

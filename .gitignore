@@ -1,8 +1,8 @@
 *.hgtags
 *.py[co]
-vim/.netrwhist
 tags
 .hg/
+vim/.netrwhist
 vim/cache/
 vim/plugged/
 vim/autoload/plug.vim.old

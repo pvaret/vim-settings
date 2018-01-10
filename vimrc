@@ -225,7 +225,8 @@ Plug 'tpope/vim-surround'
 
 " jedi-vim
 " --------
-" Awesome autocompletion. See https://github.com/davidhalter/jedi-vim.
+" Awesome Python autocompletion. See https://github.com/davidhalter/jedi-vim
+" for the many possibilities.
 
 Plug 'davidhalter/jedi-vim'
 
@@ -513,6 +514,9 @@ let g:airline_section_z = "%{airline#util#wrap(airline#extensions#obsession#get_
 let g:syntastic_python_checkers=['flake8', 'python']
 let $PYFLAKES_NODOCTEST=1
 
+" Load Syntastic checkers for Go:
+let g:syntastic_go_checkers = ['govet', 'errcheck', 'go']
+
 if exists("g:do_activate_youcompleteme") && g:do_activate_youcompleteme == 1
   " We want Jedi for its features, but completion is provided by YCM.
   let g:jedi#completions_enabled = 0
@@ -569,8 +573,9 @@ au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
-" By default, open new buffer when selecting a file in BuExplorer.
+" By default, open new buffer when selecting a file in BufExplorer.
 let g:bufExplorerFindActive = 0
+
 
 " SHORTCUTS
 " =========

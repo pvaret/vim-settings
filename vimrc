@@ -463,12 +463,6 @@ set listchars=tab:»·,trail:·
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace "\s\+$"
 
-" Highlight characters > 80 column in certain files:
-" DISABLED on 2017/11/29: Is the colorcolumn statement below sufficient?
-"highlight OverColLimit term=inverse,bold cterm=bold ctermbg=red ctermfg=white gui=bold guibg=red guifg=white
-"autocmd Filetype python 2match OverColLimit "\%>80v.\+"
-"autocmd Filetype cpp 2match OverColLimit "\%>80v.\+"
-
 " Show boundary at column textwidth+1:
 set colorcolumn=+1
 
@@ -483,7 +477,7 @@ set wildignore+=*.pyc,*.pyo
 let g:ycm_auto_trigger = 0
 
 " Make UltiSnips work well with YouCompleteMe:
-let g:UltiSnipsExpandTrigger = "<CR>"
+let g:UltiSnipsExpandTrigger = "<c-m>"  " actually means Control-Enter
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 

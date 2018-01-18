@@ -297,13 +297,6 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'AndrewRadev/splitjoin.vim'
 
 
-" UltiSnips
-" ---------
-" Good snippets plug-in. Integrates with vim-go.
-
-Plug 'sirver/ultisnips'
-
-
 " YouCompleteMe
 " -------------
 " Solid instantaneous completion engine for a lot of languages.
@@ -313,6 +306,13 @@ Plug 'sirver/ultisnips'
 if exists("g:do_activate_youcompleteme") && g:do_activate_youcompleteme == 1
   Plug 'Valloric/YouCompleteMe', { 'do': '~/.vim/plugged/YouCompleteMe/install.py --clang-completer --gocode-completer' }
 endif
+
+
+" UltiSnips
+" ---------
+" Good snippets plug-in. Integrates with vim-go and YouCompleteMe.
+
+Plug 'sirver/ultisnips'
 
 
 " Seoul256
@@ -411,7 +411,7 @@ augroup END
 
 " Colorize the cursor line differently when in insert mode. Works well with the
 " seoul256 color scheme; might need updating with a different scheme.
-autocmd InsertEnter * highlight CursorLine term=underline ctermbg=14
+autocmd InsertEnter * highlight CursorLine term=underline ctermbg=250
 autocmd InsertLeave * highlight CursorLine term=underline ctermbg=252
 
 " Extended status bar:
@@ -480,8 +480,13 @@ set wildignore+=*.pyc,*.pyo
 " ====================
 
 " YouCompleteMe configuration.
-let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_auto_trigger = 0
+
+" Make UltiSnips work well with YouCompleteMe:
+let g:UltiSnipsExpandTrigger = "<CR>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
 
 " Set up airline.
 let g:airline_powerline_fonts=1
@@ -610,10 +615,6 @@ autocmd Filetype help nnoremap <buffer>q :close<CR>
 
 " Close quickfix window more conveniently:
 autocmd Filetype qf nnoremap <buffer>q :cclose<CR>
-
-" Use standard regex in searches by default:
-nnoremap / /\v
-vnoremap / /\v
 
 " Toggle YouCompleteMe autocompletion:
 nnoremap <silent> <leader>yy :let g:ycm_auto_trigger=1-g:ycm_auto_trigger<CR>:echo "Autocompletion toggled."<CR>

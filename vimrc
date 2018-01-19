@@ -236,7 +236,14 @@ Plug 'davidhalter/jedi-vim'
 " Quote and parentheses auto-closing.
 " ":help delimitMate" for the details.
 
-Plug 'Raimondi/delimitMate'
+"DISABLED 2018/01/18 tentatively trying Auto Pairs instead.
+"Plug 'Raimondi/delimitMate'
+
+" Auto Pairs
+" ----------
+" Auto-closes quotes and parentheses.
+
+Plug 'jiangmiao/auto-pairs'
 
 
 " vim-tmux-navigator
@@ -475,9 +482,11 @@ set wildignore+=*.pyc,*.pyo
 
 " YouCompleteMe configuration.
 let g:ycm_auto_trigger = 0
+"TODO: find a trigger that doesn't conflict with UltiSnips.
+"let g:ycm_key_invoke_completion = "<c-n>"
 
 " Make UltiSnips work well with YouCompleteMe:
-let g:UltiSnipsExpandTrigger = "<c-m>"  " actually means Control-Enter
+let g:UltiSnipsExpandTrigger = "<c-space>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
@@ -558,11 +567,12 @@ let g:go_highlight_generate_tags = 1
 " Don't display list characters -- especially tabs -- in Go.
 au FileType go set nolist
 
-" Expand spaces and CR in delimitMate:
-let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
-" Also recognize triple quotes in Python:
-au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
+"DISABLED 2018/01/18 tentatively trying Auto Pairs instead.
+"" Expand spaces and CR in delimitMate:
+"let delimitMate_expand_cr = 1
+"let delimitMate_expand_space = 1
+"" Also recognize triple quotes in Python:
+"au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
 
 " Limelight can't compute the proper colors for Solarized, so we let it know
 " manually.

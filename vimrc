@@ -622,8 +622,8 @@ autocmd Filetype qf nnoremap <buffer>q :cclose<CR>
 
 " Toggle YouCompleteMe autocompletion:
 nnoremap <silent> <leader>yy :let g:ycm_auto_trigger=1-g:ycm_auto_trigger<CR>:echo "Autocompletion toggled."<CR>
-nnoremap <silent> <leader>yd :YcmCompleter GoToDeclaration<CR>
-nnoremap <silent> <leader>yh :YcmCompleter GoToDefinition<CR>
+nnoremap <silent> <leader>yh :YcmCompleter GoToDeclaration<CR>
+nnoremap <silent> <leader>yd :YcmCompleter GoToDefinition<CR>
 nnoremap <silent> <leader>yf :YcmCompleter FixIt<CR>
 
 " Trigger Dispatch.

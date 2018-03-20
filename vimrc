@@ -26,6 +26,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'
 
 
+" Vim-OrgMode
+" -----------
+" A task outlining plug-in. Lots of features. See
+" https://github.com/jceb/vim-orgmode/blob/master/doc/orgguide.txt for the
+" rundown.
+
+Plug 'jceb/vim-orgmode'
+
+
 " Goyo
 " ----
 " Distraction-free writing plug-in. Basically VimRoom, but improved.

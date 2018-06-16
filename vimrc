@@ -642,21 +642,21 @@ nnoremap <silent> <leader>yf :YcmCompleter FixIt<CR>
 nnoremap <silent> <F9> :wa<CR>:Dispatch<CR>
 
 " Bind key shortcut for NERDtree:
-nnoremap <silent> <Leader>f <ESC>:NERDTreeToggle<CR>
+nnoremap <silent> <Leader>f :NERDTreeToggle<CR>
 
 " Bind key shortcut for TagBar:
-nnoremap <silent> <Leader>t <ESC>:TagbarToggle<CR>
-nnoremap <silent> <Leader>T <ESC>:TagbarOpenAutoClose<CR>
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
+nnoremap <silent> <Leader>T :TagbarOpenAutoClose<CR>
 
 " Align first = in line:
-nnoremap <silent> <Leader>= <ESC>:Tabularize /^[^=]*\zs=<CR>
+nnoremap <silent> <Leader>= :Tabularize /^[^=]*\zs=<CR>
 
 " Align colon declarations:
-nnoremap <silent> <Leader>: <ESC>:Tabularize /:\zs/l0l1<CR>
+nnoremap <silent> <Leader>: :Tabularize /:\zs/l0l1<CR>
 
 " Bind key shortcut for Ag:
-nnoremap <leader>a <ESC>:LAg<space>
-nnoremap <leader>A <ESC>"9yiw:LAg<space>-w<space><C-R>9<CR>
+nnoremap <leader>a :LAg<space>
+nnoremap <leader>A "9yiw:LAg<space>-w<space><C-R>9<CR>
 vnoremap <leader>A "9y:LAg<space>"<C-R>9"<CR>
 
 " Clear searches with this:
@@ -672,8 +672,8 @@ nnoremap <leader>v V`]
 nnoremap <leader>w <C-w>v<C-w>l
 
 " Open new tab with current file:
-nnoremap <silent> <leader>nn <ESC>:tabnew<CR>
-nnoremap <silent> <leader>nc <ESC>:tabclose<CR>
+nnoremap <silent> <leader>nn :tabnew<CR>
+nnoremap <silent> <leader>nc :tabclose<CR>
 
 " Toggle folding:
 noremap <space> zA
@@ -682,8 +682,8 @@ noremap <space> zA
 nmap <leader>zz :Goyo<cr>
 
 " Add empty line above/below:
-nnoremap <silent> <leader>o <ESC>o<ESC>
-nnoremap <silent> <leader>O <ESC>O<ESC>
+nnoremap <silent> <leader>o o<ESC>
+nnoremap <silent> <leader>O O<ESC>
 
 " Disable Ex mode. :|
 map Q <Nop>

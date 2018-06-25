@@ -35,6 +35,13 @@ Plug 'mhinz/vim-startify'
 Plug 'jceb/vim-orgmode'
 
 
+" tpope/vim-speeddating
+" ---------------------
+" Make ctrl-A/ctrl-X work on dates too. Also used by Vim-OrgMode.
+
+Plug 'tpope/vim-speeddating'
+
+
 " Goyo
 " ----
 " Distraction-free writing plug-in. Basically VimRoom, but improved.

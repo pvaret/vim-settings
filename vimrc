@@ -474,6 +474,10 @@ set shortmess+=c
 autocmd Filetype python setlocal formatoptions-=t formatoptions+=l
 autocmd Filetype python setlocal textwidth=80
 autocmd Filetype python setlocal comments=b:##,O:#
+" Override the unfortunate overrides in the default Python ftplugin. :/
+autocmd Filetype python setlocal shiftwidth=2
+autocmd Filetype python setlocal softtabstop=2
+autocmd Filetype python setlocal tabstop=2
 
 " Override unfortunate silliness in GetPythonIndent():
 let g:pyindent_open_paren=0

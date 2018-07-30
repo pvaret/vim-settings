@@ -136,6 +136,13 @@ Plug 'tpope/vim-eunuch'
 Plug 'easymotion/vim-easymotion'
 
 
+" vim-illuminate
+" --------------
+" Highlight other occurences of the word under the cursor.
+
+Plug 'RRethy/vim-illuminate'
+
+
 " vim-css-color
 " -------------
 " Colorize colors in CSS files.
@@ -149,6 +156,7 @@ Plug 'skammer/vim-css-color'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
 
 " tmuxline.vim
 " ------------
@@ -208,13 +216,6 @@ Plug 'corntrace/bufexplorer'
 Plug 'rking/ag.vim'
 
 
-" vim-colors-solarized
-" --------------------
-" See https://github.com/altercation/vim-colors-solarized for the settings.
-
-Plug 'altercation/vim-colors-solarized'
-
-
 " NERD Tree
 " ---------
 " Explore files and directory as a convenient tree in a vim buffer.
@@ -246,14 +247,6 @@ Plug 'tpope/vim-surround'
 
 Plug 'davidhalter/jedi-vim'
 
-
-" delimitMate
-" -----------
-" Quote and parentheses auto-closing.
-" ":help delimitMate" for the details.
-
-"DISABLED 2018/01/18 tentatively trying Auto Pairs instead.
-"Plug 'Raimondi/delimitMate'
 
 " Auto Pairs
 " ----------
@@ -336,6 +329,13 @@ endif
 " Good snippets plug-in. Integrates with vim-go and YouCompleteMe.
 
 Plug 'sirver/ultisnips'
+
+
+" vim-colors-solarized
+" --------------------
+" See https://github.com/altercation/vim-colors-solarized for the settings.
+
+Plug 'altercation/vim-colors-solarized'
 
 
 " Seoul256

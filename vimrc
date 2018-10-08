@@ -522,7 +522,10 @@ let g:airline_detect_paste=1
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#syntastic#enabled=1
 let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tagbar#enabled=1
+"let g:airline#extensions#tagbar#enabled=1
+"DISABLED on 2018-08-09: breaks horribly with some files. :( (raises several
+"lines of error on each cursor motion.)
+let g:airline#extensions#tagbar#enabled=0
 let g:airline#extensions#hunks#non_zero_only=1
 let g:airline#extensions#obsession#enabled=1
 let g:airline#extensions#obsession#indicator_text='✇'
@@ -571,6 +574,9 @@ let g:jedi#usages_command = "<leader>jn"
 
 " Align comments to the left by default.
 let NERDDefaultAlign='left'
+
+" Don't insert weird placeholders when commenting stuff with subcomments.
+let NERDUsePlaceHolders=0
 
 " Automatically compute imports on save. Lovely!
 let g:go_fmt_command = "goimports"

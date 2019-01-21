@@ -643,6 +643,21 @@ let g:go_highlight_generate_tags = 1
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
+" vim-prosession
+" --------------
+
+" Let prosession set the title of the tmux window.
+let g:prosession_tmux_title = 1
+
+" Don't run prosession on start-up, we want to let Startify do its thing.
+let g:prosession_on_startup = 0
+
+" Use VCS branches on top of directory for the session name:
+let g:prosession_per_branch = 1
+
+" TODO: Find a good way to make this work for various VCS setups.
+"let g:prosession_branch_cmd = 'hg branch 2>/dev/null || git rev-parse --abbrev-ref HEAD 2>/dev/null'
+
 
 " BufExplorer
 " -----------

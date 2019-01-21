@@ -362,8 +362,8 @@ call plug#end()
 " GENERAL PREFERENCES
 " ===================
 
-" TODO: Look into vim-sensible for a set of sane default; simplify the following
-" accordingly.
+" TODO: Look into vim-sensible for a set of sane default; simplify the
+" following accordingly.
 
 
 " We do in fact want syntax coloring:
@@ -446,6 +446,12 @@ augroup END
 autocmd InsertEnter * highlight CursorLine term=underline ctermbg=250
 autocmd InsertLeave * highlight CursorLine term=underline ctermbg=252
 
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace "\s\+$"
+
+" Show boundary at column textwidth+1:
+set colorcolumn=+1
+
 " Extended status bar:
 set statusline=%<\ %n:%f\ %m%r%y\ %=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
 
@@ -479,6 +485,13 @@ set formatoptions-=o formatoptions+=rqc
 " plugins like YouCompleteMe.
 set shortmess+=c
 
+" Highlight space characters:
+set list
+set listchars=tab:»·,trail:·
+
+" Don't display list characters -- especially tabs -- in Go.
+au FileType go set nolist
+
 " Python-specific format options:
 autocmd Filetype python setlocal formatoptions-=t formatoptions+=l
 autocmd Filetype python setlocal textwidth=80
@@ -488,31 +501,27 @@ autocmd Filetype python setlocal shiftwidth=2
 autocmd Filetype python setlocal softtabstop=2
 autocmd Filetype python setlocal tabstop=2
 
+" Ignore Python object files:
+set wildignore+=*.pyc,*.pyo
+
 " Override unfortunate silliness in GetPythonIndent():
 let g:pyindent_open_paren=0
 let g:pyindent_nested_paren=0
-
-" Highlight space characters:
-set list
-set listchars=tab:»·,trail:·
-
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace "\s\+$"
-
-" Show boundary at column textwidth+1:
-set colorcolumn=+1
-
-" Ignore Python object files:
-set wildignore+=*.pyc,*.pyo
 
 
 " PLUGIN CONFIGURATION
 " ====================
 
-" YouCompleteMe configuration.
+" YouCompleteMe
+" -------------
+
 let g:ycm_auto_trigger = 0
 "TODO: find a trigger that doesn't conflict with UltiSnips.
 "let g:ycm_key_invoke_completion = "<c-n>"
+
+
+" UltiSnips
+" ---------
 
 " Make UltiSnips work well with YouCompleteMe:
 let g:UltiSnipsExpandTrigger = "<c-space>"
@@ -520,7 +529,9 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 
-" Set up airline.
+" Airline
+" -------
+
 let g:airline_powerline_fonts=1
 let g:airline_inactive_collapse=1
 "let g:airline_theme='solarized'
@@ -550,12 +561,20 @@ let g:airline_skip_empty_sections = 1
 " More compact line/column section.
 let g:airline_section_z = "%{airline#util#wrap(airline#extensions#obsession#get_status(),0)} %#__accent_bold#%l%#__restore__#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__#:%v"
 
+
+" Syntastic
+" ---------
+
 " Load correct check for Syntastic on Python:
 let g:syntastic_python_checkers=['flake8', 'python']
 let $PYFLAKES_NODOCTEST=1
 
 " Load Syntastic checkers for Go:
 let g:syntastic_go_checkers = ['govet', 'errcheck', 'go']
+
+
+" Jedi
+" ----
 
 if exists("g:do_activate_youcompleteme") && g:do_activate_youcompleteme == 1
   " We want Jedi for its features, but completion is provided by YCM.
@@ -581,11 +600,19 @@ let g:jedi#goto_definitions_command = "<leader>jd"
 let g:jedi#rename_command = "<leader>jr"
 let g:jedi#usages_command = "<leader>jn"
 
+
+" NERD Commenter
+" --------------
+
 " Align comments to the left by default.
 let NERDDefaultAlign='left'
 
 " Don't insert weird placeholders when commenting stuff with subcomments.
 let NERDUsePlaceHolders=0
+
+
+" vim-go
+" ------
 
 " Automatically compute imports on save. Lovely!
 let g:go_fmt_command = "goimports"
@@ -600,23 +627,25 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 
-" Don't display list characters -- especially tabs -- in Go.
-au FileType go set nolist
 
-"DISABLED 2018/01/18 tentatively trying Auto Pairs instead.
-"" Expand spaces and CR in delimitMate:
-"let delimitMate_expand_cr = 1
-"let delimitMate_expand_space = 1
-"" Also recognize triple quotes in Python:
-"au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
+" Limelight
+" ---------
 
 " Limelight can't compute the proper colors for Solarized, so we let it know
 " manually.
 "let g:limelight_conceal_ctermfg = 241  " DISABLED while we try out Seoul256.
 
+
+" Goyo
+" ----
+
 " Toggle Limelight alongside Goyo:
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
+
+" BufExplorer
+" -----------
 
 " By default, open new buffer when selecting a file in BufExplorer.
 let g:bufExplorerFindActive = 0

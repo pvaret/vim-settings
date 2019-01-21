@@ -93,6 +93,15 @@ Plug 'PeterRincker/vim-argumentative'
 Plug 'tpope/vim-obsession'
 
 
+" vim-prosession
+" --------------
+" Automates Obsession. Sessions are managed automatically based on the working
+" directory, and saved in ~/.vim/session/.
+" Depends on 'tpope/vim-obsession'.
+
+Plug 'dhruvasagar/vim-prosession'
+
+
 " vim-go
 " ------
 " Extensive set of Go-related plugins.

@@ -420,8 +420,8 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 
-" But allow files to override those settings:
-set modeline
+" Disable modeline, as it's a security liability. :(
+set nomodeline
 
 " Preferred completion mode:
 set wildmenu

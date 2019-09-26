@@ -30,8 +30,16 @@ bindkey -e
 
 ## MANUAL CONFIGURATION STUFF FOLLOWS
 
-## Load configuration fragments:
+## Load shared configuration fragments:
 
 find ~/.zsh/conf.d/ -type f -name "*.zsh" | sort -n | while read file ; do
   source "$file"
 done
+
+## Load local configuration fragments:
+
+find ~/.zsh/conf.local.d/ -type f -name "*.zsh" | sort -n | while read file ; do
+  source "$file"
+done
+
+## Done. Anything after this line was added automatically by something and should probably be moved.

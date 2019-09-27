@@ -1,6 +1,7 @@
 # Helper function that we need to guess who owns this file here.
+THIS_DIR="${0:a:h}"
 function guess_default_user {
-  dir=${0:a:h}
+  dir="$THIS_DIR"
 
   while [ -n "$dir" -a "$dir" != "/" ] ; do
     maybe_username="$(basename "$dir")"

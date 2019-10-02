@@ -21,10 +21,10 @@ function guess_default_user {
   [ -f /usr/share/powerlevel9k/powerlevel9k.zsh-theme ] && source /usr/share/powerlevel9k/powerlevel9k.zsh-theme
 
 # Left prompt contents:
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator context dir dir_writable vcs pyenv)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator ssh context dir dir_writable vcs pyenv background_jobs)
 
 # Right prompt contents:
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time time)
 
 # 'context': Default user. Hide element when we're that person.
 DEFAULT_USER="$(guess_default_user)"
@@ -34,3 +34,6 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 
 # 'dir': How to do the directory shortening:
 POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_first_and_last
+
+# 'status': Don't show the widget when the status is ok.
+POWERLEVEL9K_STATUS_OK=false

@@ -21,7 +21,7 @@ function guess_default_user {
   [ -f /usr/share/powerlevel9k/powerlevel9k.zsh-theme ] && source /usr/share/powerlevel9k/powerlevel9k.zsh-theme
 
 # Left prompt contents:
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator ssh context dir dir_writable vcs pyenv background_jobs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator pyenv ssh context dir dir_writable vcs background_jobs)
 
 # Right prompt contents:
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time time)
@@ -37,3 +37,6 @@ POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_first_and_last
 
 # 'status': Don't show the widget when the status is ok.
 POWERLEVEL9K_STATUS_OK=false
+
+# 'command_execution_time': Only show for things running for over 30 seconds.
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=30

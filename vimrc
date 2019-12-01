@@ -19,6 +19,14 @@ endif
 call plug#begin('~/.vim/plugged')
 
 
+" vim-sensible
+" ------------
+" Sensible defaults for everything that vim does better than vi if you ask it
+" to.
+
+Plug 'tpope/vim-sensible'
+
+
 " vim-startify
 " ------------
 " Nice and friendly start screen that shows bookmarks and current sessions.

@@ -451,8 +451,8 @@ augroup END
 
 " Colorize the cursor line differently when in insert mode. Works well with the
 " seoul256 color scheme; might need updating with a different scheme.
-autocmd InsertEnter * highlight CursorLine term=underline ctermbg=250
-autocmd InsertLeave * highlight CursorLine term=underline ctermbg=252
+autocmd InsertEnter * highlight CursorLine term=underline ctermbg=250 cterm=bold
+autocmd InsertLeave * highlight CursorLine term=underline ctermbg=252 cterm=none
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace "\s\+$"

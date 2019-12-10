@@ -596,11 +596,12 @@ else
   " Don't popup Jedi completion whenever a dot is entered:
   let g:jedi#popup_on_dot = 0
 
-  " Don't show function definitions when opening a paren; it's nice but a bit
-  " buggy:
-  let g:jedi#show_call_signatures = 0
-
 endif
+
+" Only show call signatures in the vim command line. Doing it inline in the
+" code window is very buggy.
+let g:jedi#show_call_signatures = 2
+
 
 " Override Jedi shortcuts to avoid conflicts with other plugins:
 let g:jedi#goto_command = "<leader>jg"

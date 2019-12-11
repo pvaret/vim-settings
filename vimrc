@@ -73,7 +73,7 @@ Plug 'junegunn/limelight.vim'
 " Also provides shell shortcuts: "ctrl-T", "ctrl-R", "alt-C". See
 " https://github.com/junegunn/fzf.
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all --no-update-rc' }
 
 
 " vim-online-thesaurus

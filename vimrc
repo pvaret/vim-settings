@@ -370,13 +370,6 @@ call plug#end()
 " GENERAL PREFERENCES
 " ===================
 
-" TODO: Look into vim-sensible for a set of sane default; simplify the
-" following accordingly.
-
-
-" We do in fact want syntax coloring:
-syntax on
-
 " Vim fails to detect that our tmux setup sends xterm keys. We work around
 " that here.  Without this, Ctrl-* shortcuts don't work. "screen-256color" is
 " the TERM that tmux advertises by default.
@@ -409,9 +402,6 @@ set shell=/bin/bash
 
 " Jump to the last position when reopening a file:
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-" Load per-filetype plugins.
-filetype plugin indent on
 
 " Auto-save files. Works when calling make or GoBuild.
 set autowrite
@@ -463,9 +453,6 @@ set colorcolumn=+1
 " Extended status bar:
 set statusline=%<\ %n:%f\ %m%r%y\ %=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
 
-" Always display the status bar:
-set laststatus=2
-
 " Keep some space between cursor and window border:
 set scrolloff=3
 
@@ -482,7 +469,6 @@ set undodir=/tmp/
 " Search configuration
 set smartcase
 set gdefault
-set incsearch
 set showmatch
 set hlsearch
 
@@ -737,9 +723,6 @@ nnoremap <silent> <Leader>: :Tabularize /:\zs/l0l1<CR>
 nnoremap <leader>a :LAg<space>
 nnoremap <leader>A "9yiw:LAg<space>-w<space><C-R>9<CR>
 vnoremap <leader>A "9y:LAg<space>"<C-R>9"<CR>
-
-" Clear searches with this:
-nnoremap <leader><space> :noh<CR>
 
 " Delete trailing whitespace with this:
 nnoremap <leader>W mz:%s/\s\+$//<cr>:let @/=''<CR>`z

@@ -688,9 +688,8 @@ nnoremap <silent> <C-\> :TmuxNavigatePrevious<CR>
 " Convenient shortcut:
 set pastetoggle=<F10>
 
-" Paste the current date as a new line:
-nnoremap <F5> :put! =strftime('%Y-%m-%d')<CR>
-inoremap <F5> <ESC>:put! =strftime('%Y-%m-%d')<CR>i
+" Paste the current date:
+inoremap <expr> <F5> strftime('%Y-%m-%d')
 
 " Make help easier to browse help with convenient shortcuts:
 autocmd Filetype help nnoremap <buffer><CR> <c-]>

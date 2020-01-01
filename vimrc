@@ -467,8 +467,9 @@ set undofile
 set undodir=/tmp/
 
 " Search configuration
-set smartcase
-set gdefault
+set ignorecase  " Case insensitive search by default
+set smartcase   " ... Unless we search for something containing capitals
+set gdefault    " Replace all matches in a line by default
 set showmatch
 set hlsearch
 
@@ -678,14 +679,18 @@ command! CD :execute ":lcd " . expand("%:p:h")
 "noremap <C-Right> <C-W>l
 " Remap window switching keys with tmux-navigator compatibility:
 let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <C-Left> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-Down> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-Up> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
-nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
+nnoremap <silent> <C-Left> :TmuxNavigateLeft<CR>
+nnoremap <silent> <C-Down> :TmuxNavigateDown<CR>
+nnoremap <silent> <C-Up> :TmuxNavigateUp<CR>
+nnoremap <silent> <C-Right> :TmuxNavigateRight<CR>
+nnoremap <silent> <C-\> :TmuxNavigatePrevious<CR>
 
 " Convenient shortcut:
 set pastetoggle=<F10>
+
+" Paste the current date as a new line:
+nnoremap <F5> :put! =strftime('%Y-%m-%d')<CR>
+inoremap <F5> <ESC>:put! =strftime('%Y-%m-%d')<CR>i
 
 " Make help easier to browse help with convenient shortcuts:
 autocmd Filetype help nnoremap <buffer><CR> <c-]>
@@ -725,7 +730,7 @@ nnoremap <leader>A "9yiw:LAg<space>-w<space><C-R>9<CR>
 vnoremap <leader>A "9y:LAg<space>"<C-R>9"<CR>
 
 " Delete trailing whitespace with this:
-nnoremap <leader>W mz:%s/\s\+$//<cr>:let @/=''<CR>`z
+nnoremap <leader>W mz:%s/\s\+$//<CR>:let @/=''<CR>`z
 
 " Select last pasted text:
 nnoremap <leader>v V`]
@@ -741,7 +746,7 @@ nnoremap <silent> <leader>nc :tabclose<CR>
 noremap <space> zA
 
 " Toggle Goyo:
-nmap <leader>zz :Goyo<cr>
+nmap <leader>zz :Goyo<CR>
 
 " Add empty line above/below:
 nnoremap <silent> <leader>o o<ESC>

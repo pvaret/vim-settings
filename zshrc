@@ -18,8 +18,8 @@ compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=10000
+HISTSIZE=20000
+SAVEHIST=20000
 setopt appendhistory notify
 unsetopt beep
 bindkey -e

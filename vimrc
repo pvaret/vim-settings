@@ -400,6 +400,10 @@ colorscheme seoul256-light
 " Set Vim shell to the simplest thing available, for plugins that need it:
 set shell=/bin/bash
 
+" Disable interactions with the system clipboard. It seems to be buggy in some
+" setups, and causes freezes.
+set clipboard=
+
 " Jump to the last position when reopening a file:
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 

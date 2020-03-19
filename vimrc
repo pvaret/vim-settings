@@ -344,8 +344,11 @@ endif
 " UltiSnips
 " ---------
 " Good snippets plug-in. Integrates with vim-go and YouCompleteMe.
+" Doesn't currently (2020-03) work with nvim.
 
-Plug 'sirver/ultisnips'
+if !has('nvim')
+  Plug 'sirver/ultisnips'
+endif
 
 
 " vim-colors-solarized

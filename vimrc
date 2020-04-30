@@ -215,6 +215,8 @@ Plug 'godlygeek/tabular'
 " ---------
 " Terrific syntax checking plug-in.
 " Requires some third party tools (like flake8 for Python).
+" TODO: Consider replacing with ALE (https://github.com/dense-analysis/ale),
+" which is asynchronous.
 
 Plug 'scrooloose/syntastic'
 
@@ -335,6 +337,8 @@ Plug 'AndrewRadev/splitjoin.vim'
 " Solid instantaneous completion engine for a lot of languages.
 " A bit heavy, but very handy. Requires a heavy download and then an
 " installation step, so only use if explicitly activated in .vimrc.local.early.
+" TODO: Consider replacing with Deoplete
+" (https://github.com/Shougo/deoplete.nvim)
 
 if exists("g:do_activate_youcompleteme") && g:do_activate_youcompleteme == 1
   Plug 'Valloric/YouCompleteMe', { 'do': '~/.vim/plugged/YouCompleteMe/install.py --clang-completer --gocode-completer' }
@@ -461,7 +465,7 @@ set colorcolumn=+1
 set statusline=%<\ %n:%f\ %m%r%y\ %=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
 
 " Keep some space between cursor and window border:
-set scrolloff=3
+set scrolloff=5
 
 " We're using a fast term, indeed.
 set ttyfast
@@ -481,10 +485,14 @@ set showmatch
 set hlsearch
 
 " General format options.
-set formatoptions-=o formatoptions+=rqc
+" -o: Don't insert the current comment leader when inserting a newline with o.
+" c: Autowrap comments, inserting the current comment leader.
+" q: Allow formatting of comments with gq.
+" r: Auto-insert the current comment leader on new lines.
+set formatoptions-=o formatoptions+=cqr
 
 " Silence completion messages like "match 1 of 2", which get spammy with
-" plugins like YouCompleteMe.
+" completion plugins.
 set shortmess+=c
 
 " Highlight space characters:
@@ -495,6 +503,7 @@ set listchars=tab:»·,trail:·
 au FileType go set nolist
 
 " Python-specific format options:
+" Don't automatically wrap long lines:
 autocmd Filetype python setlocal formatoptions-=t formatoptions+=l
 autocmd Filetype python setlocal textwidth=80
 autocmd Filetype python setlocal comments=b:##,O:#
@@ -645,6 +654,7 @@ let g:go_highlight_generate_tags = 1
 " Toggle Limelight alongside Goyo:
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
 
 " vim-prosession
 " --------------

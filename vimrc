@@ -34,18 +34,9 @@ Plug 'tpope/vim-sensible'
 Plug 'mhinz/vim-startify'
 
 
-" Vim-OrgMode
-" -----------
-" A task outlining plug-in. Lots of features. See
-" https://github.com/jceb/vim-orgmode/blob/master/doc/orgguide.txt for the
-" rundown.
-
-Plug 'jceb/vim-orgmode'
-
-
 " tpope/vim-speeddating
 " ---------------------
-" Make ctrl-A/ctrl-X work on dates too. Also used by Vim-OrgMode.
+" Make ctrl-A/ctrl-X work on dates too.
 
 Plug 'tpope/vim-speeddating'
 
@@ -105,6 +96,8 @@ Plug 'tpope/vim-obsession'
 " --------------
 " Automates Obsession. Sessions are managed automatically based on the working
 " directory, and saved in ~/.vim/session/.
+" Start a session with :Prosession. It will be reopened automatically when vim
+" is opened in the same directory.
 " Depends on 'tpope/vim-obsession'.
 
 Plug 'dhruvasagar/vim-prosession'
@@ -298,18 +291,10 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'ConradIrwin/vim-bracketed-paste'
 
 
-" Codi
-" ----
-" Awesome interactive scratchpad for Python and others.
-" Start with ":Codi" in a Python buffer or ":Codi python" elsewhere.
-
-Plug 'metakirby5/codi.vim'
-
-
 " vim-dispatch
 " ------------
-" Adds the ":Dispatch" command, which runs command line tools asynchronously in
-" an automatically opened tmux window. Can also run tasks entirely in the
+" Adds the ":Dispatch" command, which runs command line tools asynchronously
+" in an automatically opened tmux window. Can also run tasks entirely in the
 " background with ":Dispatch!" and focus the new window with ":Start".
 " Override the local dispatch action with ":let b:dispatch='command args'"
 

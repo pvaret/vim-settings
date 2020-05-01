@@ -272,7 +272,8 @@ Plug 'vim-airline/vim-airline-themes'
 " ":Tmuxline [theme] [preset]" applies the given Airline theme and tmuxline
 " preset (from autoload/tmuxline/presets/) to the tmux status line.
 " ":TmuxlineSnapshot [file]" saves that configuration to [file], to be loaded
-" from .tmux.conf.
+" from .tmux.conf. In our case that's:
+"   :TmuxlineSnapshot! ~/.vim/tmuxline.conf
 " By default it automatically applies the current Airline style.
 
 Plug 'edkolev/tmuxline.vim'

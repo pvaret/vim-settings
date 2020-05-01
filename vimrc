@@ -37,6 +37,25 @@ Plug 'tpope/vim-sensible'
 
 
 "-----------------------------------------------------------------------------
+" Color schemes
+"-----------------------------------------------------------------------------
+" Solarized: a nice color scheme. See
+" https://github.com/altercation/vim-colors-solarized for the settings. Not
+" actually in use right now, as we use Seoul these days.
+
+"Plug 'altercation/vim-colors-solarized'
+
+" Seoul256: A soft color theme.
+Plug 'junegunn/seoul256.vim'
+
+
+set background=light
+
+" Apply the colorscheme once the vim startup is done.
+autocmd VimEnter * colorscheme seoul256-light
+
+
+"-----------------------------------------------------------------------------
 " vim-startify
 "-----------------------------------------------------------------------------
 " Nice and friendly start screen that shows bookmarks and current sessions.
@@ -287,6 +306,9 @@ let g:airline_skip_empty_sections = 1
 
 " More compact line/column section.
 let g:airline_section_z = "%{airline#util#wrap(airline#extensions#obsession#get_status(),0)} %#__accent_bold#%l%#__restore__#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__#:%v"
+
+" Make sure to apply the settings after every other plugin is also loaded.
+autocmd VimEnter * AirlineRefresh
 
 
 "-----------------------------------------------------------------------------
@@ -572,25 +594,6 @@ endif
 let g:UltiSnipsExpandTrigger = "<c-space>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-
-"-----------------------------------------------------------------------------
-" Color schemes
-"-----------------------------------------------------------------------------
-" Solarized: a nice color scheme. See
-" https://github.com/altercation/vim-colors-solarized for the settings. Not
-" actually in use right now, as we use Seoul these days.
-
-"Plug 'altercation/vim-colors-solarized'
-
-" Seoul256: A soft color theme.
-Plug 'junegunn/seoul256.vim'
-
-
-set background=light
-
-" Apply the colorscheme once the vim startup is done.
-autocmd VimEnter * colorscheme seoul256-light
 
 
 "=============================================================================

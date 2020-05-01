@@ -568,16 +568,22 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 
 "-----------------------------------------------------------------------------
-" Solarized and Seoul256
+" Color schemes
 "-----------------------------------------------------------------------------
 " Solarized: a nice color scheme. See
-" https://github.com/altercation/vim-colors-solarized for the settings.
+" https://github.com/altercation/vim-colors-solarized for the settings. Not
+" actually in use right now, as we use Seoul these days.
 
-Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
 
 " Seoul256: A soft color theme.
-
 Plug 'junegunn/seoul256.vim'
+
+
+set background=light
+
+" Apply the colorscheme once the vim startup is done.
+autocmd VimEnter * colorscheme seoul256-light
 
 
 "=============================================================================
@@ -609,12 +615,6 @@ endif
 if &term =~ '256color'
   set t_ut=
 endif
-
-" Setup color scheme:
-"set background=dark
-"colorscheme solarized
-set background=light
-colorscheme seoul256-light
 
 " Set Vim shell to the simplest thing available, for plugins that need it:
 set shell=/bin/bash

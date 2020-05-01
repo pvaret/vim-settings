@@ -1,6 +1,13 @@
+" VERY EARLY SETUP
+" ================
+
 " Explicitly set this script's encoding, so it doesn't fail under other
 " locales.
 scriptencoding utf-8
+
+" Better leader than the default:
+let mapleader=","
+let maplocalleader=","
 
 
 " LOCAL OVERRIDES (EARLY)
@@ -734,10 +741,6 @@ let g:pyindent_nested_paren=0
 
 " SHORTCUTS
 " =========
-
-" Better leader than the default:
-let mapleader=","
-let maplocalleader=","
 
 " Cd to current buffer's directory
 command! CD :execute ":lcd " . expand("%:p:h")

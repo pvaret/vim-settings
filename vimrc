@@ -372,7 +372,8 @@ Plug 'dense-analysis/ale'
 " Slightly nicer looking linter error messages.
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %code%: %s [%severity%]'
+let g:ale_echo_msg_info_str = 'I'
+let g:ale_echo_msg_format = '[%linter%]% code:% %s [%severity%]'
 
 
 "-----------------------------------------------------------------------------
@@ -430,41 +431,6 @@ Plug 'tpope/vim-repeat'
 " in pairs.
 
 Plug 'tpope/vim-surround'
-
-
-"-----------------------------------------------------------------------------
-" jedi-vim
-"-----------------------------------------------------------------------------
-" Awesome Python autocompletion. See https://github.com/davidhalter/jedi-vim
-" for the many possibilities.
-
-Plug 'davidhalter/jedi-vim'
-
-
-if exists("g:do_activate_youcompleteme") && g:do_activate_youcompleteme == 1
-  " We want Jedi for its features, but completion is provided by YCM.
-  let g:jedi#completions_enabled = 0
-
-else
-
-  " Let Jedi configure Vim to suit its needs.
-  let g:jedi#auto_vim_configuration = 1
-
-  " Don't popup Jedi completion whenever a dot is entered:
-  let g:jedi#popup_on_dot = 0
-
-endif
-
-" Only show call signatures in the vim command line. Doing it inline in the
-" code window is very buggy.
-let g:jedi#show_call_signatures = 2
-
-
-" Override Jedi shortcuts to avoid conflicts with other plugins:
-let g:jedi#goto_command = "<leader>jg"
-let g:jedi#goto_definitions_command = "<leader>jd"
-let g:jedi#rename_command = "<leader>jr"
-let g:jedi#usages_command = "<leader>jn"
 
 
 "-----------------------------------------------------------------------------
@@ -552,28 +518,62 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 
 "-----------------------------------------------------------------------------
-" YouCompleteMe
+" jedi-vim
 "-----------------------------------------------------------------------------
-" Solid instantaneous completion engine for a lot of languages.
-" A bit heavy, but very handy. Requires a heavy download and then an
-" installation step, so only use if explicitly activated in .vimrc.local.early.
-" TODO: Consider replacing with Deoplete
-" (https://github.com/Shougo/deoplete.nvim)
+" Awesome Python autocompletion. See https://github.com/davidhalter/jedi-vim
+" for the many possibilities.
 
-if exists("g:do_activate_youcompleteme") && g:do_activate_youcompleteme == 1
-  Plug 'Valloric/YouCompleteMe', { 'do': '~/.vim/plugged/YouCompleteMe/install.py --clang-completer --gocode-completer' }
+Plug 'davidhalter/jedi-vim'
+
+
+" Actually let Deoplete do the completing though deoplete-jedi.
+let g:jedi#completions_enabled = 0
+
+" Let Jedi configure Vim to suit its needs.
+let g:jedi#auto_vim_configuration = 1
+
+" Only show call signatures in the vim command line. Doing it inline in the
+" code window is very buggy.
+let g:jedi#show_call_signatures = 2
+
+
+" Override Jedi shortcuts to avoid conflicts with other plugins:
+let g:jedi#goto_command = "<leader>jg"
+let g:jedi#goto_definitions_command = "<leader>jd"
+let g:jedi#rename_command = "<leader>jr"
+let g:jedi#usages_command = "<leader>jn"
+
+
+"-----------------------------------------------------------------------------
+" Deoplete
+"-----------------------------------------------------------------------------
+" Modern, asynchronous complete engine. Hopefully less clunky than
+" YouCompleteMe. Written for NeoVim but works with Vim 8, provided a few
+" helper modules are present.
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
 
-let g:ycm_auto_trigger = 0
-" Toggle YouCompleteMe autocompletion:
-nnoremap <silent> <leader>yy :let g:ycm_auto_trigger=1-g:ycm_auto_trigger<CR>:echo "Autocompletion toggled."<CR>
-nnoremap <silent> <leader>yh :YcmCompleter GoToDeclaration<CR>
-nnoremap <silent> <leader>yd :YcmCompleter GoToDefinition<CR>
-nnoremap <silent> <leader>yf :YcmCompleter FixIt<CR>
+let g:deoplete#enable_at_startup = 1
 
-"TODO: find a trigger that doesn't conflict with UltiSnips.
-"let g:ycm_key_invoke_completion = "<c-n>"
+
+" Use Tab and Shift-Tab to navigate up and down completion menus.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
+
+"-----------------------------------------------------------------------------
+" deoplete-jedi
+"-----------------------------------------------------------------------------
+" Lets Deoplete use Jedi as the completion engine for Python.
+
+Plug 'deoplete-plugins/deoplete-jedi'
 
 
 "-----------------------------------------------------------------------------

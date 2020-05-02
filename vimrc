@@ -169,7 +169,7 @@ let g:prosession_per_branch = 1
 " See https://github.com/fatih/vim-go.
 " Use a tagged release for stability.
 
-Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoInstallBinaries', 'for': 'go' }
 
 
 " Automatically compute imports on save. Lovely!
@@ -287,7 +287,7 @@ let g:airline_detect_modified=1
 let g:airline_detect_paste=1
 " And its extensions.
 let g:airline#extensions#branch#enabled=1
-let g:airline#extensions#syntastic#enabled=1
+let g:airline#extensions#ale#enabled=1
 let g:airline#extensions#tabline#enabled=1
 "let g:airline#extensions#tagbar#enabled=1
 "DISABLED on 2018-08-09: breaks horribly with some files. :( (raises several
@@ -359,22 +359,20 @@ nnoremap <silent> <Leader>: :Tabularize /:\zs/l0l1<CR>
 
 
 "-----------------------------------------------------------------------------
-" Syntastic
+" ALE
 "-----------------------------------------------------------------------------
-" Terrific syntax checking plug-in.
-" Requires some third party tools (like flake8 for Python).
-" TODO: Consider replacing with ALE (https://github.com/dense-analysis/ale),
-" which is asynchronous.
+" Cool syntax checker. Works asynchronously, unlike Syntastic of yore.
+" Automatically runs the checkers it knows about and are around. For Python,
+" for instance, that will be flake8 (pip install flake8) for lintint and mypy
+" (pip install mypy) for type checking.
 
-Plug 'scrooloose/syntastic'
+Plug 'dense-analysis/ale'
 
 
-" Load correct check for Syntastic on Python:
-let g:syntastic_python_checkers=['flake8', 'python']
-let $PYFLAKES_NODOCTEST=1
-
-" Load Syntastic checkers for Go:
-let g:syntastic_go_checkers = ['govet', 'errcheck', 'go']
+" Slightly nicer looking linter error messages.
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %code%: %s [%severity%]'
 
 
 "-----------------------------------------------------------------------------

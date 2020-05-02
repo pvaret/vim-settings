@@ -726,7 +726,7 @@ au FileType go set nolist
 " Python-specific format options:
 " Don't automatically wrap long lines:
 autocmd Filetype python setlocal formatoptions-=t formatoptions+=l
-autocmd Filetype python setlocal textwidth=80
+autocmd Filetype python setlocal textwidth=79
 autocmd Filetype python setlocal comments=b:##,O:#
 " Override the unfortunate overrides in the default Python ftplugin. :/
 autocmd Filetype python setlocal shiftwidth=2

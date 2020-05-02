@@ -569,30 +569,30 @@ inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 
 "-----------------------------------------------------------------------------
-" deoplete-jedi
+" Neosnippets (plus default snippets)
 "-----------------------------------------------------------------------------
-" Lets Deoplete use Jedi as the completion engine for Python.
+" Snippets extension for Deoplete. Tentative replacement for UltiSnips.
+" Requires Deoplete, obviously. Seems buggy with Vim8.
 
-Plug 'deoplete-plugins/deoplete-jedi'
+if has('nvim')
+  Plug 'Shougo/neosnippet.vim'
+  Plug 'Shougo/neosnippet-snippets'
 
 
-"-----------------------------------------------------------------------------
-" UltiSnips
-"-----------------------------------------------------------------------------
-" Good snippets plug-in. Integrates with vim-go and YouCompleteMe.
-" TODO: Try out Shougo/neosnippet.vim instead; it works with NeoVim and
-" integrates with Deoplete.
-
-" Doesn't currently (2020-03) work with nvim.
-if !has('nvim')
-  Plug 'sirver/ultisnips'
+  " Use control-Space to trigger snippet insertion.
+  imap <C-Space> <Plug>(neosnippet_expand_or_jump)
+  smap <C-Space> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-Space> <Plug>(neosnippet_expand_target)
 endif
 
 
-" Make UltiSnips work well with YouCompleteMe:
-let g:UltiSnipsExpandTrigger = "<c-space>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+"-----------------------------------------------------------------------------
+" deoplete-jedi
+"-----------------------------------------------------------------------------
+" Lets Deoplete use Jedi as the completion engine for Python.
+" Requires Deoplete and jedi-vim.
+
+Plug 'deoplete-plugins/deoplete-jedi'
 
 
 "=============================================================================

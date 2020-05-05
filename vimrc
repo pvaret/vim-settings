@@ -679,6 +679,9 @@ autocmd InsertLeave * highlight CursorLine term=underline ctermbg=252 cterm=none
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace "\s\+$"
 
+" Use a commong textwidth for all file types.
+set textwidth=79
+
 " Show boundary at column textwidth+1:
 set colorcolumn=+1
 
@@ -726,7 +729,6 @@ au FileType go set nolist
 " Python-specific format options:
 " Don't automatically wrap long lines:
 autocmd Filetype python setlocal formatoptions-=t formatoptions+=l
-autocmd Filetype python setlocal textwidth=79
 autocmd Filetype python setlocal comments=b:##,O:#
 " Override the unfortunate overrides in the default Python ftplugin. :/
 autocmd Filetype python setlocal shiftwidth=2

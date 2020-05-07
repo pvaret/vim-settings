@@ -99,6 +99,22 @@ nmap <leader>zz :Goyo<CR>
 
 
 "-----------------------------------------------------------------------------
+" Vimwiki
+"-----------------------------------------------------------------------------
+" Easily manage interconnected personal documentation.
+" :help vimwiki for the details.
+" Shortcuts:
+" <Leader>ww: open the default index.
+" <Enter>: Create or follow a link on the current word.
+" <Backspace>: Go back.
+
+Plug 'vimwiki/vimwiki'
+
+
+let g:vimwiki_list = [{'path': '~/Documents/Wiki/', 'ext': '.txt'}]
+
+
+"-----------------------------------------------------------------------------
 " FZF
 "-----------------------------------------------------------------------------
 " Super fast file finder.
@@ -502,10 +518,17 @@ nnoremap <silent> <F9> :wa<CR>:Dispatch<CR>
 "-----------------------------------------------------------------------------
 " vim-windowswap
 "-----------------------------------------------------------------------------
-" Adds a simple way to swap two windows. <leader>ww in a window to mark it,
-" <leader>ww in another window to swap it, without affecting the layout.
+" Adds a simple way to swap two windows. <leader>nw in a window to mark it,
+" <leader>nw in another window to swap it, without affecting the layout.
 
 Plug 'wesQ3/vim-windowswap'
+
+
+" Prevent default bindings.
+let g:windowswap_map_keys = 0
+
+
+nnoremap <silent> <leader>nw :call WindowSwap#EasyWindowSwap()<CR>
 
 
 "-----------------------------------------------------------------------------

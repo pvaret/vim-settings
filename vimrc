@@ -413,9 +413,9 @@ Plug 'rking/ag.vim'
 
 
 " Bind key shortcut for Ag:
-nnoremap <leader>a :LAg<space>
-nnoremap <leader>A "9yiw:LAg<space>-w<space><C-R>9<CR>
-vnoremap <leader>A "9y:LAg<space>"<C-R>9"<CR>
+nnoremap <leader>a :Ag<space>
+nnoremap <leader>A "9yiw:Ag<space>-w<space><C-R>9<CR>
+vnoremap <leader>A "9y:Ag<space>"<C-R>9"<CR>
 
 
 "-----------------------------------------------------------------------------

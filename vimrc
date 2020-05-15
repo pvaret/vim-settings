@@ -9,6 +9,22 @@ scriptencoding utf-8
 let mapleader=","
 let maplocalleader=","
 
+" Determine whether we can use plugins that depend on asynchronous Python
+" backends, be that in Vim or NeoVim.
+
+let g:has_python_nvim=0
+if has('pythonx')
+  try
+    if has('nvim')
+      pythonx import neovim
+    else
+      pythonx import pynvim
+    endif
+    let g:has_python_nvim=1
+  catch
+  endtry
+endif
+
 
 " LOCAL OVERRIDES (EARLY)
 " =======================
@@ -546,7 +562,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 " Awesome Python autocompletion. See https://github.com/davidhalter/jedi-vim
 " for the many possibilities.
 
-Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 
 " Actually let Deoplete do the completing though deoplete-jedi.
@@ -574,12 +590,16 @@ let g:jedi#usages_command = "<leader>jn"
 " YouCompleteMe. Written for NeoVim but works with Vim 8, provided a few
 " helper modules are present.
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+if g:has_python_nvim
+  if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+  endif
 else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+  echomsg 'Deoplete not loaded; install pynvim.py or neovim.py.'
 endif
 
 
@@ -615,7 +635,9 @@ endif
 " Lets Deoplete use Jedi as the completion engine for Python.
 " Requires Deoplete and jedi-vim.
 
-Plug 'deoplete-plugins/deoplete-jedi'
+if g:has_python_nvim
+  Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
+endif
 
 
 "=============================================================================

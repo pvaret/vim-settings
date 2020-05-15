@@ -127,7 +127,7 @@ nmap <leader>zz :Goyo<CR>
 Plug 'vimwiki/vimwiki'
 
 
-let g:vimwiki_list = [{'path': '~/Documents/Wiki/', 'ext': '.txt'}]
+let g:vimwiki_list = [{'path': '~/Documents/Wiki/', 'ext': '.wk'}]
 
 
 "-----------------------------------------------------------------------------

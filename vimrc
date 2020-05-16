@@ -13,12 +13,12 @@ let maplocalleader=","
 " backends, be that in Vim or NeoVim.
 
 let g:has_python_nvim=0
-if has('pythonx')
+if has('python3')
   try
     if has('nvim')
-      pythonx import neovim
+      python3 import neovim
     else
-      pythonx import pynvim
+      python3 import pynvim
     endif
     let g:has_python_nvim=1
   catch

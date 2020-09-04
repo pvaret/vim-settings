@@ -397,8 +397,9 @@ nnoremap <silent> <Leader>: :Tabularize /:\zs/l0l1<CR>
 " Automatically runs the checkers it knows about and are around. For Python,
 " for instance, that will be flake8 (pip install flake8) for lintint and mypy
 " (pip install mypy) for type checking.
+" Only use tagged versions, as head tends to be buggy.
 
-Plug 'dense-analysis/ale'
+Plug 'dense-analysis/ale', { 'tag': '*' }
 
 
 " Slightly nicer looking linter error messages.

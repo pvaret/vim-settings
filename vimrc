@@ -777,9 +777,9 @@ au FileType go set nolist
 autocmd Filetype python setlocal formatoptions-=t formatoptions+=l
 autocmd Filetype python setlocal comments=b:##,O:#
 " Override the unfortunate overrides in the default Python ftplugin. :/
-autocmd Filetype python setlocal shiftwidth=2
-autocmd Filetype python setlocal softtabstop=2
-autocmd Filetype python setlocal tabstop=2
+autocmd Filetype python setlocal shiftwidth=4
+autocmd Filetype python setlocal softtabstop=4
+autocmd Filetype python setlocal tabstop=4
 
 " Ignore Python object files:
 set wildignore+=*.pyc,*.pyo

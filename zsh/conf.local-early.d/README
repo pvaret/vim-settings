@@ -1,2 +1,2 @@
 Files matching the pattern "*.zsh" in this directory are sourced in order by
-~/.zshrc, after the ones in ~/.zsh/conf.d/, and are not saved in git.
+~/.zshrc, before the ones in ~/.zsh/conf.d/, and are not saved in git.

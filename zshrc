@@ -30,6 +30,12 @@ bindkey -e
 
 ## MANUAL CONFIGURATION STUFF FOLLOWS
 
+## Load early local configuration fragments:
+
+find ~/.zsh/conf.local-early.d/ -type f -name "*.zsh" | sort -n | while read file ; do
+  source "$file"
+done
+
 ## Load shared configuration fragments:
 
 find ~/.zsh/conf.d/ -type f -name "*.zsh" | sort -n | while read file ; do

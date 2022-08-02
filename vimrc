@@ -12,15 +12,13 @@ let maplocalleader=","
 " Determine whether we can use plugins that depend on asynchronous Python
 " backends, be that in Vim or NeoVim.
 
-let g:has_python_nvim=0
+let g:_has_pynvim=0
 if has('python3')
   try
-    if has('nvim')
-      python3 import neovim
-    else
-      python3 import pynvim
-    endif
-    let g:has_python_nvim=1
+    " Note that this needs to be installed for the >>SYSTEM<< Python 3 because
+    " that's what Vim is compiled against.
+    python3 import pynvim
+    let g:_has_pynvim=1
   catch
   endtry
 endif
@@ -563,7 +561,9 @@ Plug 'AndrewRadev/splitjoin.vim'
 " Awesome Python autocompletion. See https://github.com/davidhalter/jedi-vim
 " for the many possibilities.
 
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+if has('python3')
+  Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+endif
 
 
 " Actually let Deoplete do the completing though deoplete-jedi.
@@ -591,7 +591,7 @@ let g:jedi#usages_command = "<leader>jn"
 " YouCompleteMe. Written for NeoVim but works with Vim 8, provided a few
 " helper modules are present.
 
-if g:has_python_nvim
+if g:_has_pynvim
   if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   else
@@ -599,12 +599,12 @@ if g:has_python_nvim
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
   endif
+  let g:deoplete#enable_at_startup = 1
 else
-  echomsg 'Deoplete not loaded; install pynvim.py or neovim.py.'
+  if has('python3')
+    echomsg 'Deoplete not loaded; install pynvim.'
+  endif
 endif
-
-
-let g:deoplete#enable_at_startup = 1
 
 
 " Use Tab and Shift-Tab to navigate up and down completion menus.
@@ -636,7 +636,7 @@ endif
 " Lets Deoplete use Jedi as the completion engine for Python.
 " Requires Deoplete and jedi-vim.
 
-if g:has_python_nvim
+if g:_has_pynvim
   Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
 endif
 

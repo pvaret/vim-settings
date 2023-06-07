@@ -9,21 +9,7 @@ scriptencoding utf-8
 let mapleader=","
 let maplocalleader=","
 
-" Determine whether we can use plugins that depend on asynchronous Python
-" backends, be that in Vim or NeoVim.
-
-let g:_has_pynvim=0
-if has('python3')
-  try
-    " Note that this needs to be installed for the >>SYSTEM<< Python 3 because
-    " that's what Vim is compiled against.
-    python3 import pynvim
-    let g:_has_pynvim=1
-  catch
-  endtry
-endif
-
-
+"
 " LOCAL OVERRIDES (EARLY)
 " =======================
 
@@ -566,8 +552,8 @@ if has('python3')
 endif
 
 
-" Actually let Deoplete do the completing though deoplete-jedi.
-let g:jedi#completions_enabled = 0
+" Use Jedi completions.
+let g:jedi#completions_enabled = 1
 
 " Let Jedi configure Vim to suit its needs.
 let g:jedi#auto_vim_configuration = 1
@@ -585,34 +571,6 @@ let g:jedi#usages_command = "<leader>jn"
 
 
 "-----------------------------------------------------------------------------
-" Deoplete
-"-----------------------------------------------------------------------------
-" Modern, asynchronous complete engine. Hopefully less clunky than
-" YouCompleteMe. Written for NeoVim but works with Vim 8, provided a few
-" helper modules are present.
-
-if g:_has_pynvim
-  if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-  endif
-  let g:deoplete#enable_at_startup = 1
-else
-  if has('python3')
-    echomsg 'Deoplete not loaded; install pynvim.'
-  endif
-endif
-
-
-" Use Tab and Shift-Tab to navigate up and down completion menus.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
-
-
-"-----------------------------------------------------------------------------
 " Neosnippets (plus default snippets)
 "-----------------------------------------------------------------------------
 " Snippets extension for Deoplete. Tentative replacement for UltiSnips.
@@ -627,17 +585,6 @@ if has('nvim')
   imap <C-Space> <Plug>(neosnippet_expand_or_jump)
   smap <C-Space> <Plug>(neosnippet_expand_or_jump)
   xmap <C-Space> <Plug>(neosnippet_expand_target)
-endif
-
-
-"-----------------------------------------------------------------------------
-" deoplete-jedi
-"-----------------------------------------------------------------------------
-" Lets Deoplete use Jedi as the completion engine for Python.
-" Requires Deoplete and jedi-vim.
-
-if g:_has_pynvim
-  Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
 endif
 
 

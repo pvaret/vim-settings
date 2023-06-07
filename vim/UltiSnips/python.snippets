@@ -1,9 +1,0 @@
-snippet pudb "Set PuDB breakpoint" b
-import pudb; pu.db
-endsnippet
-
-snippet pudbs "Set PuDB breakpoint using standard stdout" b
-import sys ; __stdout = sys.__stdout__ ; sys.stdout = sys.__stdout__
-import pudb ; pu.db
-sys.stdout = __stdout
-endsnippet

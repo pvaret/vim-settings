@@ -126,14 +126,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all --no-update-rc' }
 
 
 "-----------------------------------------------------------------------------
-" vim-online-thesaurus
-"-----------------------------------------------------------------------------
-" ",K" to look up the word under the cursor.
-
-Plug 'beloglazov/vim-online-thesaurus'
-
-
-"-----------------------------------------------------------------------------
 " vim-argumentative
 "-----------------------------------------------------------------------------
 " Add grammar objects for function arguments.
@@ -379,7 +371,7 @@ nnoremap <silent> <Leader>: :Tabularize /:\zs/l0l1<CR>
 "-----------------------------------------------------------------------------
 " Cool syntax checker. Works asynchronously, unlike Syntastic of yore.
 " Automatically runs the checkers it knows about and are around. For Python,
-" for instance, that will be flake8 (pip install flake8) for lintint and mypy
+" for instance, that will be flake8 (pip install flake8) for linting and mypy
 " (pip install mypy) for type checking.
 " Only use tagged versions, as head tends to be buggy.
 
@@ -568,24 +560,6 @@ let g:jedi#goto_command = "<leader>jg"
 let g:jedi#goto_definitions_command = "<leader>jd"
 let g:jedi#rename_command = "<leader>jr"
 let g:jedi#usages_command = "<leader>jn"
-
-
-"-----------------------------------------------------------------------------
-" Neosnippets (plus default snippets)
-"-----------------------------------------------------------------------------
-" Snippets extension for Deoplete. Tentative replacement for UltiSnips.
-" Requires Deoplete, obviously. Seems buggy with Vim8.
-
-if has('nvim')
-  Plug 'Shougo/neosnippet.vim'
-  Plug 'Shougo/neosnippet-snippets'
-
-
-  " Use control-Space to trigger snippet insertion.
-  imap <C-Space> <Plug>(neosnippet_expand_or_jump)
-  smap <C-Space> <Plug>(neosnippet_expand_or_jump)
-  xmap <C-Space> <Plug>(neosnippet_expand_target)
-endif
 
 
 "=============================================================================

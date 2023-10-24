@@ -26,6 +26,9 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator pyenv ssh context dir dir_writ
 # Right prompt contents:
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time time)
 
+# Show the prompt itself on a new line:
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+
 # 'context': Default user. Hide element when we're that person.
 DEFAULT_USER="$(guess_default_user)"
 

@@ -21,7 +21,7 @@ function guess_default_user {
   [ -f /usr/share/powerlevel9k/powerlevel9k.zsh-theme ] && source /usr/share/powerlevel9k/powerlevel9k.zsh-theme
 
 # Left prompt contents:
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator pyenv ssh context dir dir_writable vcs background_jobs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator virtualenv ssh context dir dir_writable vcs background_jobs)
 
 # Right prompt contents:
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time time)

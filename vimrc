@@ -378,6 +378,11 @@ nnoremap <silent> <Leader>: :Tabularize /:\zs/l0l1<CR>
 Plug 'dense-analysis/ale', { 'tag': '*' }
 
 
+" Less verbose error notifications.
+
+let g:ale_virtualtext_cursor = 'none'
+
+
 " Slightly nicer looking linter error messages.
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'

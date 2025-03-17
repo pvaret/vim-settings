@@ -26,7 +26,7 @@ bindkey -e
 # End of lines configured by zsh-newuser-install
 
 
-## AUTOMATICALLY CONFIGURE STUFF ENDS
+## AUTOMATICALLY CONFIGURED STUFF ENDS
 
 ## MANUAL CONFIGURATION STUFF FOLLOWS
 

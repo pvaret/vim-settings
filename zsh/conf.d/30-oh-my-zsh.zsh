@@ -19,9 +19,34 @@ if [ -f "$ZSH/oh-my-zsh.sh" ] ; then
 
   # Check out ~/.oh-my-zsh/plugins/ for plugins.
   plugins=(
+    aliases
+    alias-finder
+    colorize
     command-not-found
+    common-aliases
+    copybuffer
+    direnv
+    emoji
+    extract
+    fasd
+    fzf
+    git
     golang
+    gpg-agent
+    jj
+    jump
     mosh
+    pip
+    pyenv
+    safe-paste
+    ssh
+    ssh-agent
+    sudo
+    systemd
+    tmux
+    ubuntu
+    uv
+    zsh-interactive-cd
   )
 
   source "$ZSH/oh-my-zsh.sh"

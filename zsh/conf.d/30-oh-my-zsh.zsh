@@ -40,7 +40,6 @@ if [ -f "$ZSH/oh-my-zsh.sh" ] ; then
     pyenv
     safe-paste
     ssh
-    ssh-agent
     sudo
     systemd
     tmux

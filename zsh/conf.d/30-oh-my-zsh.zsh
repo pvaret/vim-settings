@@ -24,6 +24,7 @@ if [ -f "$ZSH/oh-my-zsh.sh" ] ; then
     colorize
     command-not-found
     common-aliases
+    conda-env
     copybuffer
     direnv
     emoji

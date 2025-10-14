@@ -1,6 +1,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+ZSH_THEME=jonathan
+
 if [ -f "$ZSH/oh-my-zsh.sh" ] ; then
 
   # See ~/.oh-my-zsh/templates/zshrc.zsh-template for configuration options.

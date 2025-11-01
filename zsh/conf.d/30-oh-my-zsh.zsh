@@ -48,6 +48,7 @@ if [ -f "$ZSH/oh-my-zsh.sh" ] ; then
     tmux
     ubuntu
     uv
+    virtualenv
     zsh-interactive-cd
   )
 

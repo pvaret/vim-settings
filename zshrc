@@ -49,3 +49,5 @@ find ~/.zsh/conf.local.d/ -type f -name "*.zsh" | sort -n | while read file ; do
 done
 
 ## Done. Anything after this line was added automatically by something and should probably be moved.
+
+return

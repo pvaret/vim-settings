@@ -44,7 +44,6 @@ if [ -f "$ZSH/oh-my-zsh.sh" ] ; then
     sudo
     systemd
     tmux
-    ubuntu
     uv
     virtualenv
     zsh-interactive-cd
